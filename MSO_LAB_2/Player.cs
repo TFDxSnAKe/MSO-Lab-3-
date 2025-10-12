@@ -8,14 +8,21 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    class Player
+    public class Player
     {
-        (int,int) position = (0,0); // default is (0,0)
+        public Point position { get; private set; }
         Direction direction = Direction.East;
 
-        Player()
+        public Player()
         {
-            //
+           
         }
+
+
+        public void LogLocation()
+        {
+            Console.WriteLine("Player is at: " + position.X + ", " + position.Y );
+        }
+
     }
 }
