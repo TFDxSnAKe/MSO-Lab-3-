@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    internal class Player
+    class Player
     {
-        Point position = new(); // default is (0,0)
+        (int,int) position = (0,0); // default is (0,0)
         Direction direction = Direction.East;
 
         Player()
