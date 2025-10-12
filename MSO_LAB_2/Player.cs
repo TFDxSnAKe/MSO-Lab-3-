@@ -10,7 +10,7 @@ namespace MSO_LAB_2
 {
     public class Player
     {
-        public Point position { get; private set; }
+        public Point position { get; set; }
         Direction direction = Direction.East;
 
         public Player()

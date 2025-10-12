@@ -7,17 +7,20 @@ namespace MSO_LAB_2
     {
         public static Point[,] Field = new Point[20, 20];
 
-        Player player = new();
+        //Player player = new();
 
 
         static void Main(string[] args)
         {
             InitializeField();
-
+            Player player = new();
+            player.position = new Point(1, 0);
+            player.LogLocation();
 
 
         }
 
+        //Set up field, fill with points.
         static void InitializeField()
         {
             for (int x = 0; x < 20; x++)
@@ -29,19 +32,6 @@ namespace MSO_LAB_2
             }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
+    }
 }
