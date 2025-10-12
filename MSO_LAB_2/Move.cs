@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    class Move : Command
+    public class Move : ICommand
     {
-        protected override void Excecute()
+        int _counter;
+        public Move(int counter)
         {
-            throw new NotImplementedException();
+            this._counter = counter;
+        }
+        public void Execute(Player p)
+        {
+            p.Move(this._counter);
         }
     }
 }

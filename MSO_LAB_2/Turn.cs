@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    class Turn : Command
+    public class Turn : ICommand
     {
-        protected override void Excecute()
+        string _dir; // left or right
+        public Turn(string dir) 
         {
-            throw new NotImplementedException();
+            this._dir = dir;
+        }
+        public void Execute(Player p)
+        {
+            if (_dir == "left")
+            {
+                p.TurnLeft();
+            }
+            else { p.TurnRight(); };
         }
     }
 }

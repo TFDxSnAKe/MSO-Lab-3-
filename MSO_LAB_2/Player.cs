@@ -8,14 +8,46 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    class Player
+    public class Player
     {
-        (int,int) position = (0,0); // default is (0,0)
-        Direction direction = Direction.East;
+        public (int,int) position = (0,0); // default is (0,0)
+        public Direction direction = Direction.East;
 
-        Player()
+        public Player()
         {
             //
+        }
+
+
+        public void Move(int i)
+        {
+            switch (direction)
+            {
+                case Direction.North:
+                    position.Item2 += i; // (x,y+i)
+                    break;
+                case Direction.East:
+                    position.Item1 += i; // (x+i,y)
+                    break;
+                case Direction.South:
+                    position.Item2 -= i; // (x,y-i)
+                    break;
+                case Direction.West:
+                    position.Item1 -= i; // (x-1,y)
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void TurnLeft()
+        {
+            direction = (Direction)(((int)direction + 3) % 4);
+        }
+
+        public void TurnRight() 
+        {
+            direction = (Direction)(((int)direction + 1) % 4);
         }
     }
 }

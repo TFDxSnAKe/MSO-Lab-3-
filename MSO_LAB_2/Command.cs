@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    abstract class Command
+    public interface ICommand // lets make it an interface after all 
     {
-        protected abstract void Excecute();
+        void Execute(Player p);
     }
 }

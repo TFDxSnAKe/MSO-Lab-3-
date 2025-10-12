@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace MSO_LAB_2
 {
-    class Repeat : Command
+    public class Repeat : ICommand
     {
-        List<Command> Commands = new List<Command>();
-        protected override void Excecute()
+        List<ICommand> _commands;
+        int _counter;
+
+        public Repeat(List<ICommand> commands, int counter)
         {
-            throw new NotImplementedException();
+            this._commands = commands;
+            this._counter = counter;
         }
 
-        protected void Add(Command c)
+        public void Execute(Player p)
         {
-            Commands.Add(c);
+            foreach (var command in _commands)
+            {
+                command.Execute(p);
+            }
         }
-
-        protected void Remove(Command c) 
-        {
-            Commands.Remove(c);
-        } 
     }
 }
