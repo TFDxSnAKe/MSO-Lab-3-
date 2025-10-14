@@ -9,7 +9,7 @@ namespace MSO_LAB_2
 {
     public class Move : ICommand
     {
-        int _steps;
+        public int _steps;
         Player _player;
         public Move(Player p, int count)
         {

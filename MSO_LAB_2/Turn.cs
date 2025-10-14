@@ -8,7 +8,7 @@ namespace MSO_LAB_2
 {
     public class Turn : ICommand
     {
-        string _dir; // left or right
+        public string _dir; // left or right
         Player _player;
         public Turn(Player p, string dir) 
         {

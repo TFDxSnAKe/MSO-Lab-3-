@@ -17,8 +17,9 @@ namespace TestProject
                     "   Move 3",
                     "Turn left"
                 });
+            Player tempPlayer = new Player();
 
-            var reader = new TextFileRead(tempFile);
+            var reader = new TextFileRead(tempPlayer, tempFile);
             var commands =  reader.ProgramCommands;
 
             Assert.Equal(3, commands.Count);
@@ -28,7 +29,7 @@ namespace TestProject
 
             // check move
             var move1 = (Move)commands[0];
-            Assert.Equal(1, move1._counter);
+            Assert.Equal(1, move1._steps);
 
             // check repeat 
             var repeat = (Repeat)commands[1];
