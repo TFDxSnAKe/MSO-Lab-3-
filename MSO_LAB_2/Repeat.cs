@@ -8,8 +8,8 @@ namespace MSO_LAB_2
 {
     public class Repeat : ICommand
     {
-        List<ICommand> _commands;
-        int _counter;
+        public List<ICommand> _commands;
+        public int _counter;
 
         public Repeat(List<ICommand> commands, int counter)
         {

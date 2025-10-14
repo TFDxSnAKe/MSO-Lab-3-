@@ -8,7 +8,7 @@ namespace MSO_LAB_2
 {
     public class Turn : ICommand
     {
-        string _dir; // left or right
+        public string _dir; // left or right
         public Turn(string dir) 
         {
             this._dir = dir;
@@ -19,7 +19,11 @@ namespace MSO_LAB_2
             {
                 p.TurnLeft();
             }
-            else { p.TurnRight(); };
+            else if (_dir == "right")
+            {
+                p.TurnRight();
+            }
+            else { return; } // for now
         }
     }
 }

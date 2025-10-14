@@ -8,7 +8,7 @@ namespace MSO_LAB_2
 {
     public class Move : ICommand
     {
-        int _counter;
+        public int _counter;
         public Move(int counter)
         {
             this._counter = counter;
