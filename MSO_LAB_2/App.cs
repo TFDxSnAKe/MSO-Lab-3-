@@ -11,21 +11,25 @@ namespace MSO_LAB_2
     {
         static void Main(string[] args)
         {
+            ChooseProgram();
+            /*
             string programPath = Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\program.txt");
             StreamReader s = new StreamReader(programPath);
-            Console.WriteLine(s.ReadToEnd());
+            Console.WriteLine(s.ReadToEnd());*/
         }
 
-        void ChooseProgram()
+        static void ChooseProgram()
         {
             Console.WriteLine("[1] Example Programs \n" +
-                              "[2] Import Program (.txt)");
+                              "[2] Use Imported Program (.txt)");
             var input = Console.ReadLine();
             switch (input)
             {
                 case "1":
+                    ChooseExample();
                     break;
                 case "2":
+                    ChooseMode(new Program(programName: GetPath("Pogram")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -33,7 +37,7 @@ namespace MSO_LAB_2
             }     
         }
 
-        void ChooseExample()
+        static void ChooseExample()
         {
             Console.WriteLine("[1] Basic\n" +
                               "[2] Advanced\n" +
@@ -42,10 +46,14 @@ namespace MSO_LAB_2
             switch (input)
             {
                 case "1":
+                    ChooseMode(new Program(programName: GetPath("Basic")));
                     break;
                 case "2":
+
+                    ChooseMode(new Program(programName: GetPath("Advanced")));
                     break;
                 case "3":
+                    ChooseMode(new Program(programName: GetPath("Expert")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -53,7 +61,7 @@ namespace MSO_LAB_2
             }
         }
 
-        void ChooseMode()
+        static void ChooseMode(Program program)
         {
             Console.WriteLine("[1] Execute selected program\n" +
                               "[2] Calculate metrics");
@@ -61,6 +69,7 @@ namespace MSO_LAB_2
             switch (input)
             {
                 case "1":
+                    ExecuteProgram(program);
                     break;
                 case "2":
                     break;
@@ -70,7 +79,12 @@ namespace MSO_LAB_2
             }
         }
 
-        string GetPath(string name)
+        static void ExecuteProgram(Program program)
+        {
+            program.Run();
+        }
+
+        static string GetPath(string name)
         {
             return Path.Combine(AppContext.BaseDirectory,$"..\\..\\..\\{name}.txt");
         }
