@@ -16,34 +16,6 @@ namespace MSO_LAB_2
             Console.WriteLine(s.ReadToEnd());
         }
 
-
-        string[] BasicScript = { "Move 10",
-                                 "Turn right",
-                                 "Move 10",
-                                 "Turn right",
-                                 "Move 10",
-                                 "Turn right",
-                                 "Move 10",
-                                 "Turn right",};
-
-        string[] AdvancedScript = { "Repeat 4 times",
-                                    "    Move 10",
-                                    "    Turn right"};
-
-        string[] ExpertScript = { "Move 5", 
-                                  "Turn left",
-                                  "Turn left",
-                                  "Move 3",
-                                  "Turn right",
-                                  "Repeat 3 times",
-                                  "    Move 1",
-                                  "    Turn right",
-                                  "    Repeat 5 times",
-                                  "        Move 2",
-                                  "Turn left"};
-                                                            
-
-
         void ChooseProgram()
         {
             Console.WriteLine("[1] Example Programs \n" +
@@ -79,6 +51,28 @@ namespace MSO_LAB_2
                     Console.WriteLine("Invalid input");
                     break;
             }
+        }
+
+        void ChooseMode()
+        {
+            Console.WriteLine("[1] Execute selected program\n" +
+                              "[2] Calculate metrics");
+            var input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
+        }
+
+        string GetPath(string name)
+        {
+            return Path.Combine(AppContext.BaseDirectory,$"..\\..\\..\\{name}.txt");
         }
 
     }
