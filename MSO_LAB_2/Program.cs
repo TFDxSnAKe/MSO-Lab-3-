@@ -17,6 +17,7 @@ namespace MSO_LAB_2
         //Set up field, fill with points.
         static void InitializeField()
         {
+            Grid = new bool[20, 20];
             for (int x = 0; x < 20; x++)
             {
                 for (int y = 0; y < 20; y++)
