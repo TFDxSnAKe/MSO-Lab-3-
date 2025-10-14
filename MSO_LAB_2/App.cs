@@ -11,7 +11,9 @@ namespace MSO_LAB_2
     {
         static void Main(string[] args)
         {
-
+            string programPath = Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\program.txt");
+            StreamReader s = new StreamReader(programPath);
+            Console.WriteLine(s.ReadToEnd());
         }
 
 
