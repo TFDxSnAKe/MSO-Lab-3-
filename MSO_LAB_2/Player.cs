@@ -10,12 +10,18 @@ namespace MSO_LAB_2
 {
     public class Player
     {
-        public (int,int) position = (0,0); // default is (0,0)
-        public Direction direction = Direction.East;
+        public Point position { get; set; }
+        Direction direction = Direction.East;
 
         public Player()
         {
-            //
+           
+        }
+
+
+        public void LogLocation()
+        {
+            Console.WriteLine("Player is at: " + position.X + ", " + position.Y );
         }
 
 
