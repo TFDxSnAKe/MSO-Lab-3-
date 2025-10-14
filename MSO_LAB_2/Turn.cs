@@ -24,7 +24,7 @@ namespace MSO_LAB_2
             }
             else { TurnRight(_player); };
 
-            //Console.WriteLine("Player turned "+ _dir + " and now faces " + p.direction);
+            //Console.WriteLine("Player turned "+ _dir + " and now faces " + _player.direction);
         }
 
         public void TurnLeft(Player p)

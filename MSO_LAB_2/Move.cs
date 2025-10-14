@@ -36,7 +36,7 @@ namespace MSO_LAB_2
                 default:
                     break;
             }
-            Console.WriteLine("Player verplaatste zich: " + _steps + " stappen");
+            //Console.WriteLine("Player verplaatste zich: " + _steps + " stappen");
         }
     }
 }

@@ -15,7 +15,7 @@ namespace MSO_LAB_2
         {
             this._commands = commands;
             this._counter = counter;
-            Execute();
+            //Execute();
         }
 
         public void Execute()
@@ -26,7 +26,6 @@ namespace MSO_LAB_2
                 {
                     command.Execute();
                 }
-                Console.WriteLine(_commands);
             }
             
         }
