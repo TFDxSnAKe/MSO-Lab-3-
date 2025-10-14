@@ -11,9 +11,11 @@ namespace MSO_LAB_2
     {
         // store the read commands in here
         public List<ICommand> ProgramCommands = new List<ICommand>();
+        Player _player;
         
-        public TextFileRead(string programName)
+        public TextFileRead(Player p, string programName)
         {
+            _player = p;
             var allLines = File.ReadAllLines(programName).ToList();
             var ind = 0;
             ProgramCommands = ReadCommands(cmds: allLines,
@@ -48,14 +50,14 @@ namespace MSO_LAB_2
                 if (currLine.StartsWith("Turn"))
                 {
                     var temp = currLine.Split(' ');
-                    var turnCmd = new Turn(dir: temp[1]);
+                    var turnCmd = new Turn(_player, dir: temp[1]);
                     commands.Add(turnCmd);
                     index++;
                 }
                 else if (currLine.StartsWith("Move"))
                 {
                     var temp = currLine.Split(' ');
-                    var MoveCmd = new Move(counter: int.Parse(temp[1]));
+                    var MoveCmd = new Move(_player, count: int.Parse(temp[1]));
                     commands.Add(MoveCmd);
                     index++;
                 }
