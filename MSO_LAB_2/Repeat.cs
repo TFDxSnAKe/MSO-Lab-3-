@@ -19,10 +19,14 @@ namespace MSO_LAB_2
 
         public void Execute(Player p)
         {
-            foreach (var command in _commands)
+            for (int x = 0; x < _counter; x++)          //toegevoegd zat de command chain ook gerepeat wordt zovaak als dat moet
             {
-                command.Execute(p);
+                foreach (var command in _commands)
+                {
+                    command.Execute(p);
+                }
             }
+            
         }
     }
 }
