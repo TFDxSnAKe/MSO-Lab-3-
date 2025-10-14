@@ -7,9 +7,15 @@ namespace MSO_LAB_2
     class Program
     {
         public static bool[,] Grid; // bool for easily checking if the player is in a specific spot
+        List<ICommand> _commands;
 
-        static void Main(string[] args)
+
+        // constructor based off of list of commands
+        public Program(string programName) // keep program logic seperate from main io interaction with user
         {
+            TextFileRead tempFileRead = new(programName: programName);
+            _commands = tempFileRead.ProgramCommands; // throw the read commands into the list here
+
             InitializeField();
             Player player = new();
             player.LogLocation();
@@ -28,6 +34,15 @@ namespace MSO_LAB_2
             }
 
             Grid[0,0] = true; // where the player is
+        }
+
+
+        public void Run()
+        {
+            foreach (ICommand command in _commands)
+            {
+                // command.Execute();    // uncomment after merge with new logic code
+            }
         }
     }
 }
