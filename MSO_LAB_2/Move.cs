@@ -9,30 +9,32 @@ namespace MSO_LAB_2
 {
     public class Move : ICommand
     {
-        int _counter;
-        public Move(int counter)
+        int _steps;
+        public Move(Player p, int count)
         {
-            this._counter = counter;
+            this._steps = count;
+            Execute(p);
         }
         public void Execute(Player p)
         {
             switch (p.direction)
             {
                 case Direction.North:
-                    p.position += new Vector2(0, _counter); // (x,y+counter)
+                    p.position += new Vector2(0, _steps); // (x,y+counter)
                     break;
                 case Direction.East:
-                    p.position += new Vector2(_counter, 0); // (x+counter,y)
+                    p.position += new Vector2(_steps, 0); // (x+counter,y)
                     break;
                 case Direction.South:
-                    p.position -= new Vector2(0, _counter); // (x,y-counter)
+                    p.position -= new Vector2(0, _steps); // (x,y-counter)
                     break;
                 case Direction.West:
-                    p.position -= new Vector2(_counter, 0); // (x-counter,y)
+                    p.position -= new Vector2(_steps, 0); // (x-counter,y)
                     break;
                 default:
                     break;
             }
+            //Console.WriteLine("Player verplaatste zich: " + _steps + " stappen");
         }
     }
 }
