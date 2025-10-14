@@ -15,15 +15,16 @@ namespace MSO_LAB_2
         {
             this._commands = commands;
             this._counter = counter;
+            //Execute();
         }
 
-        public void Execute(Player p)
+        public void Execute()
         {
             for (int x = 0; x < _counter; x++)          //toegevoegd zat de command chain ook gerepeat wordt zovaak als dat moet
             {
                 foreach (var command in _commands)
                 {
-                    command.Execute(p);
+                    command.Execute();
                 }
             }
             
