@@ -10,12 +10,12 @@ namespace MSO_LAB_2
 {
     public class Player
     {
-        public Point position { get; set; }
+        public Vector2 position = Vector2.Zero; // changed to vec2 for easy addition 
         Direction direction = Direction.East;
 
         public Player()
         {
-           
+           //
         }
 
 
@@ -30,16 +30,16 @@ namespace MSO_LAB_2
             switch (direction)
             {
                 case Direction.North:
-                    position.Item2 += i; // (x,y+i)
+                    position += new Vector2(0, i); // (x,y+i)
                     break;
                 case Direction.East:
-                    position.Item1 += i; // (x+i,y)
+                    position += new Vector2(i, 0); // (x+i,y)
                     break;
                 case Direction.South:
-                    position.Item2 -= i; // (x,y-i)
+                    position -= new Vector2(0, i); // (x,y-i)
                     break;
                 case Direction.West:
-                    position.Item1 -= i; // (x-1,y)
+                    position -= new Vector2(i, 0); // (x-1,y)
                     break;
                 default:
                     break;

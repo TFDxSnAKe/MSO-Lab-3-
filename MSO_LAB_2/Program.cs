@@ -5,19 +5,13 @@ namespace MSO_LAB_2
 {
     class Program
     {
-        public static Point[,] Field = new Point[20, 20];
-
-        //Player player = new();
-
+        public static bool[,] Grid; // bool for easily checking if the player is in a specific spot
 
         static void Main(string[] args)
         {
             InitializeField();
             Player player = new();
-            player.position = new Point(1, 0);
             player.LogLocation();
-
-
         }
 
         //Set up field, fill with points.
@@ -27,11 +21,11 @@ namespace MSO_LAB_2
             {
                 for (int y = 0; y < 20; y++)
                 {
-                    Field[x, y] = new Point(x, y);
+                    Grid[x, y] = false;
                 }
             }
 
-
+            Grid[0,0] = true; // where the player is
         }
     }
 }
