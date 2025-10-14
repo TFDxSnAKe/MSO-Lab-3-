@@ -9,17 +9,22 @@ namespace MSO_LAB_2
     public class Turn : ICommand
     {
         string _dir; // left or right
-        public Turn(string dir) 
+        Player _player;
+        public Turn(Player p, string dir) 
         {
             this._dir = dir;
+            _player = p;
+            //Execute();
         }
-        public void Execute(Player p)
+        public void Execute()
         {
             if (_dir == "left")
             {
-                TurnLeft(p);
+                TurnLeft(_player);
             }
-            else { TurnRight(p); };
+            else { TurnRight(_player); };
+
+            //Console.WriteLine("Player turned "+ _dir + " and now faces " + p.direction);
         }
 
         public void TurnLeft(Player p)
