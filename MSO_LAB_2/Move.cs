@@ -37,6 +37,12 @@ namespace MSO_LAB_2
                     break;
             }
             //Console.WriteLine("Player verplaatste zich: " + _steps + " stappen");
+            Log();
+        }
+
+        void Log()
+        {
+            Console.Write($"Move({_steps}), ");
         }
     }
 }
