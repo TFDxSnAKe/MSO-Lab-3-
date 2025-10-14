@@ -11,7 +11,7 @@ namespace MSO_LAB_2
     public class Player
     {
         public Vector2 position = Vector2.Zero; // changed to vec2 for easy addition 
-        Direction direction = Direction.East;
+        public Direction direction = Direction.East;
 
         public Player()
         {
@@ -24,7 +24,7 @@ namespace MSO_LAB_2
             Console.WriteLine("Player is at: " + position.X + ", " + position.Y );
         }
 
-
+        /*
         public void Move(int i)
         {
             switch (direction)
@@ -55,5 +55,6 @@ namespace MSO_LAB_2
         {
             direction = (Direction)(((int)direction + 1) % 4);
         }
+        */
     }
 }

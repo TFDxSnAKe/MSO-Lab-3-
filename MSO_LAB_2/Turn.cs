@@ -17,9 +17,21 @@ namespace MSO_LAB_2
         {
             if (_dir == "left")
             {
-                p.TurnLeft();
+                TurnLeft(p);
             }
-            else { p.TurnRight(); };
+            else { TurnRight(p); };
         }
+
+        public void TurnLeft(Player p)
+        {
+            p.direction = (Direction)(((int)p.direction + 3) % 4);
+        }
+
+        public void TurnRight(Player p)
+        {
+            p.direction = (Direction)(((int)p.direction + 1) % 4);
+        }
+
+
     }
 }
