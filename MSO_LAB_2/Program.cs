@@ -7,7 +7,7 @@ namespace MSO_LAB_2
     {
         public static bool[,] Grid; // bool for easily checking if the player is in a specific spot
 
-        static void Main(string[] args)
+        public Program() // keep program logic seperate from main io interaction with user
         {
             InitializeField();
             Player player = new();
