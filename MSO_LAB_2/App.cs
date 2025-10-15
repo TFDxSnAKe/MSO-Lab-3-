@@ -73,6 +73,7 @@ namespace MSO_LAB_2
                     ExecuteProgram(program);
                     break;
                 case "2":
+                    MetricsProgram(program);
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -83,6 +84,11 @@ namespace MSO_LAB_2
         static void ExecuteProgram(Program program)
         {
             program.Run(player);
+        }
+
+        static void MetricsProgram(Program program)
+        {
+            program.DisplayMetrics();
         }
 
         // .txt file path finding helper

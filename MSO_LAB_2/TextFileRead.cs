@@ -12,15 +12,20 @@ namespace MSO_LAB_2
         // store the read commands in here
         public List<ICommand> ProgramCommands = new List<ICommand>();
         Player _player;
+        public int _noOfCmds;
+        public int _maxNest;
+        public int _noOfRepeats;
         
         public TextFileRead(Player p, string programName)
         {
             _player = p;
+            _maxNest = 0; 
             var allLines = File.ReadAllLines(programName).ToList();
             var ind = 0;
             ProgramCommands = ReadCommands(cmds: allLines,
                                            index: ref ind,
                                            indentCount: 0);
+            FetchMetrics();
         }
 
         private List<ICommand> ReadCommands(List<string> cmds, ref int index, int indentCount)
@@ -31,7 +36,7 @@ namespace MSO_LAB_2
             {
 
                 var line = cmds[index];
-
+                    
                 if (string.IsNullOrWhiteSpace(line))
                 {
                     index++;
@@ -39,7 +44,7 @@ namespace MSO_LAB_2
                 }
 
                 int currIndent = CountIndent(line);
-                
+
                 if (currIndent < indentCount)
                 {
                     break; // exit indent (repeat block)
@@ -88,6 +93,36 @@ namespace MSO_LAB_2
                 else { break; }
             }
             return i;
+        }
+
+        private void FetchMetrics()
+        {
+            // use call by reference on object variables to store values
+            CalcMetrics(cmds: ProgramCommands,
+                        nest: 0,
+                        noOfCmds: ref _noOfCmds,
+                        noOfRepeats: ref _noOfRepeats,
+                        maxNest: ref _maxNest);
+        }
+
+
+        private void CalcMetrics(List<ICommand> cmds, int nest, ref int noOfCmds, ref int noOfRepeats, ref int maxNest)
+        {
+            foreach (var cmd in cmds)
+            {
+                noOfCmds++;
+
+                if (cmd is Repeat r)
+                {
+                    noOfRepeats++;
+                    if (maxNest < nest + 1)
+                    {
+                        maxNest = nest + 1;
+                    }
+                    // recursively call on the repeat object and keep counting there
+                    CalcMetrics(r._commands, nest + 1, ref noOfCmds, ref noOfRepeats, ref maxNest);
+                }
+            }
         }
     }
 }
