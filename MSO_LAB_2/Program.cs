@@ -7,14 +7,12 @@ namespace MSO_LAB_2
     class Program
     {
         List<ICommand> _commands;
-
+       
         // constructor based off of list of commands
-        public Program(string programName) // keep program logic seperate from main io interaction with user
+        public Program(Player player, string programName) // keep program logic seperate from main io interaction with user
         {
-            Player player = new();
             TextFileRead tempFileRead = new(p: player, programName: programName);
             _commands = tempFileRead.ProgramCommands; // throw the read commands into the list here
-            Run(player);
         }
 
         public void Run(Player p)

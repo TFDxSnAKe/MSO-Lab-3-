@@ -1,11 +1,8 @@
-﻿
-// this is a test //
+﻿// test
 
-Move 10
-Turn right
-Move 10
-Turn right
-Move 10
-Turn right
-Move 10
-Turn right
+Turn left
+Move 12
+Repeat 2 times
+    Move 1
+    Turn left
+    Move 3

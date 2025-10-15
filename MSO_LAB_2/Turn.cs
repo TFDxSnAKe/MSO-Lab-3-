@@ -14,7 +14,6 @@ namespace MSO_LAB_2
         {
             this._dir = dir;
             _player = p;
-            //Execute();
         }
         public void Execute()
         {
@@ -23,8 +22,6 @@ namespace MSO_LAB_2
                 TurnLeft(_player);
             }
             else { TurnRight(_player); };
-
-            //Console.WriteLine("Player turned "+ _dir + " and now faces " + _player.direction);
             Log();
         }
 
@@ -38,11 +35,9 @@ namespace MSO_LAB_2
             p.direction = (Direction)(((int)p.direction + 1) % 4);
         }
 
-        void Log()
+        public void Log()
         {
             Console.Write($"Turn({_dir}), ");
         }
-
-
     }
 }

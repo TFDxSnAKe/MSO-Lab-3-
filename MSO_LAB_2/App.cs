@@ -9,12 +9,13 @@ namespace MSO_LAB_2
 {
     public class App
     {
+        static public Player player = new();
         static void Main(string[] args)
         {
-            ChooseProgram();
+            RunApp();
         }
 
-        static void ChooseProgram()
+        static void RunApp()
         {
             Console.WriteLine("[1] Example Programs \n" +
                               "[2] Use Imported Program (.txt)");
@@ -25,7 +26,8 @@ namespace MSO_LAB_2
                     ChooseExample();
                     break;
                 case "2":
-                    ChooseMode(new Program(programName: GetPath("Program")));
+                    ChooseMode(new Program(player: player,
+                                           programName: GetPath("Program")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -42,14 +44,17 @@ namespace MSO_LAB_2
             switch (input)
             {
                 case "1":
-                    ChooseMode(new Program(programName: GetPath("Basic")));
+                    ChooseMode(new Program(player: player,
+                                           programName: GetPath("Basic")));
                     break;
                 case "2":
 
-                    ChooseMode(new Program(programName: GetPath("Advanced")));
+                    ChooseMode(new Program(player: player,
+                                           programName: GetPath("Advanced")));
                     break;
                 case "3":
-                    ChooseMode(new Program(programName: GetPath("Expert")));
+                    ChooseMode(new Program(player: player,
+                                           programName: GetPath("Expert")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -77,12 +82,13 @@ namespace MSO_LAB_2
 
         static void ExecuteProgram(Program program)
         {
-            program.Run();
+            program.Run(player);
         }
 
+        // .txt file path finding helper
         static string GetPath(string name)
         {
-            return Path.Combine(AppContext.BaseDirectory,$"..\\..\\..\\{name}.txt");
+            return Path.Combine(AppContext.BaseDirectory, $"..\\..\\..\\{name}.txt");
         }
 
     }

@@ -15,7 +15,6 @@ namespace MSO_LAB_2
         {
             this._steps = count;
             _player = p;
-            //Execute();
         }
         public void Execute()
         {
@@ -36,11 +35,10 @@ namespace MSO_LAB_2
                 default:
                     break;
             }
-            //Console.WriteLine("Player verplaatste zich: " + _steps + " stappen");
             Log();
         }
 
-        void Log()
+        public void Log()
         {
             Console.Write($"Move({_steps}), ");
         }
