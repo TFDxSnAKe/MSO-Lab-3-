@@ -88,7 +88,9 @@ namespace MSO_LAB_2
 
         static void MetricsProgram(Program program)
         {
-            program.DisplayMetrics();
+            var cmds = program._commands;
+            var metric = new Metrics(cmds);
+            metric.DisplayMetrics();
         }
 
         // .txt file path finding helper
