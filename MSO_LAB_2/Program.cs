@@ -19,7 +19,7 @@ namespace MSO_LAB_2
             _commands = _textFileRead.ProgramCommands; // throw the read commands into the list here
         }
 
-        public void Run(Player p)
+        public void Execute(Player p)
         {
             foreach (ICommand command in _commands)
             {

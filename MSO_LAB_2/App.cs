@@ -83,7 +83,7 @@ namespace MSO_LAB_2
 
         static void ExecuteProgram(Program program)
         {
-            program.Run(player);
+            program.Execute(player);
         }
 
         static void MetricsProgram(Program program)
