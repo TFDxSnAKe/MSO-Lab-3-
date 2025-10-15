@@ -12,10 +12,6 @@ namespace MSO_LAB_2
         static void Main(string[] args)
         {
             ChooseProgram();
-            /*
-            string programPath = Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\program.txt");
-            StreamReader s = new StreamReader(programPath);
-            Console.WriteLine(s.ReadToEnd());*/
         }
 
         static void ChooseProgram()
@@ -29,7 +25,7 @@ namespace MSO_LAB_2
                     ChooseExample();
                     break;
                 case "2":
-                    ChooseMode(new Program(programName: GetPath("Pogram")));
+                    ChooseMode(new Program(programName: GetPath("Program")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
