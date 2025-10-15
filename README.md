@@ -1,5 +1,11 @@
+# MSO-Lab-2-
+
 Naam, StudentenNummer: 
+- Jeremy Smith, 9063072
+- Damiaan Kiesling, 8372357
 
-Jeremy Smith, 9063072
+This program has 4 programs: Basic, Advanced, Expert and Program.
+All of them are .txt files.
 
-Damiaan Kiesling, 8372357
+You can edit Program.txt to make a custom program. This will be option 2 when you run the app.
+Once you've selected a program and either run the program or calculate the metrics, the program executes your selected choice and ends.
