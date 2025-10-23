@@ -1,4 +1,4 @@
-using MSO_LAB_2;
+using MSO_LAB_3;
 using Xunit;
 
 namespace TestProject

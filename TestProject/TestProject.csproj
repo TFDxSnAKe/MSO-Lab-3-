@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MSO_LAB_2\MSO_LAB_2.csproj" />
+    <ProjectReference Include="..\MSO_LAB_2\MSO_LAB_3.csproj" />
   </ItemGroup>
 
   <ItemGroup>

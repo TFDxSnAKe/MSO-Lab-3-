@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 
-namespace MSO_LAB_2
+namespace MSO_LAB_3
 {
     class Program
     {
