@@ -10,7 +10,7 @@ namespace MSO_LAB_3
     {
         public List<ICommand> _commands;
         public int _counter;
-
+        private string logString;
         public Repeat(List<ICommand> commands, int counter)
         {
             this._commands = commands;
@@ -19,18 +19,20 @@ namespace MSO_LAB_3
 
         public void Execute()
         {
+            logString = string.Empty;
             for (int x = 0; x < _counter; x++)          //toegevoegd zat de command chain ook gerepeat wordt zovaak als dat moet
             {
                 foreach (var command in _commands)
                 {
                     command.Execute();
+                    logString += command.Log();
                 }
             }
         }
 
-        public void Log()
+        public string Log()
         {
-            // nothing lol
+            return logString; // still nothing lol
         }
     }
 }

@@ -94,7 +94,7 @@ namespace MSO_LAB_3
         }
 
         // .txt file path finding helper
-        static string GetPath(string name)
+        public static string GetPath(string name)
         {
             return Path.Combine(AppContext.BaseDirectory, $"..\\..\\..\\{name}.txt");
         }

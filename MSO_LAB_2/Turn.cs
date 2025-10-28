@@ -22,7 +22,7 @@ namespace MSO_LAB_3
                 TurnLeft(_player);
             }
             else { TurnRight(_player); };
-            Log();
+            // Log(); no more need here
         }
 
         public void TurnLeft(Player p)
@@ -35,9 +35,9 @@ namespace MSO_LAB_3
             p.direction = (Direction)(((int)p.direction + 1) % 4);
         }
 
-        public void Log()
+        public string Log()
         {
-            Console.Write($"Turn({_dir}), ");
+            return $"Turn({_dir}), ";
         }
     }
 }

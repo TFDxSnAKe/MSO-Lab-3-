@@ -28,12 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            OutputBox = new TextBox();
+            ExecuteProgramButton = new Button();
+            SaveButton = new Button();
+            OpenProgram = new Button();
+            EditorWindow = new RichTextBox();
+            SuspendLayout();
+            // 
+            // OutputBox
+            // 
+            OutputBox.BackColor = SystemColors.Window;
+            OutputBox.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            OutputBox.Location = new Point(752, 465);
+            OutputBox.Multiline = true;
+            OutputBox.Name = "OutputBox";
+            OutputBox.ReadOnly = true;
+            OutputBox.ScrollBars = ScrollBars.Both;
+            OutputBox.Size = new Size(304, 193);
+            OutputBox.TabIndex = 0;
+            OutputBox.TextChanged += OutputBox_TextChanged;
+            // 
+            // ExecuteProgramButton
+            // 
+            ExecuteProgramButton.Location = new Point(12, 102);
+            ExecuteProgramButton.Name = "ExecuteProgramButton";
+            ExecuteProgramButton.Size = new Size(136, 38);
+            ExecuteProgramButton.TabIndex = 1;
+            ExecuteProgramButton.Text = "Execute Program";
+            ExecuteProgramButton.UseVisualStyleBackColor = true;
+            ExecuteProgramButton.Click += button1_Click;
+            // 
+            // SaveButton
+            // 
+            SaveButton.Location = new Point(12, 58);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new Size(136, 38);
+            SaveButton.TabIndex = 3;
+            SaveButton.Text = "Save Program";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
+            // 
+            // OpenProgram
+            // 
+            OpenProgram.Location = new Point(12, 14);
+            OpenProgram.Name = "OpenProgram";
+            OpenProgram.Size = new Size(136, 38);
+            OpenProgram.TabIndex = 4;
+            OpenProgram.Text = "Open Program";
+            OpenProgram.UseVisualStyleBackColor = true;
+            OpenProgram.Click += OpenProgram_Click;
+            // 
+            // EditorWindow
+            // 
+            EditorWindow.Font = new Font("Cascadia Code", 15.75F);
+            EditorWindow.Location = new Point(154, 14);
+            EditorWindow.Name = "EditorWindow";
+            EditorWindow.Size = new Size(592, 646);
+            EditorWindow.TabIndex = 2;
+            EditorWindow.Text = "";
+            EditorWindow.TextChanged += EditorWindow_TextChanged_1;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(1068, 670);
+            Controls.Add(EditorWindow);
+            Controls.Add(OpenProgram);
+            Controls.Add(SaveButton);
+            Controls.Add(ExecuteProgramButton);
+            Controls.Add(OutputBox);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox OutputBox;
+        private Button ExecuteProgramButton;
+        private Button SaveButton;
+        private Button OpenProgram;
+        private RichTextBox EditorWindow;
     }
 }
