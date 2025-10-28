@@ -28,12 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            OutputBox = new TextBox();
+            ExecuteProgramButton = new Button();
+            SuspendLayout();
+            // 
+            // OutputBox
+            // 
+            OutputBox.Location = new Point(457, 319);
+            OutputBox.Multiline = true;
+            OutputBox.Name = "OutputBox";
+            OutputBox.Size = new Size(304, 105);
+            OutputBox.TabIndex = 0;
+            OutputBox.TextChanged += OutputBox_TextChanged;
+            // 
+            // ExecuteProgramButton
+            // 
+            ExecuteProgramButton.Location = new Point(75, 319);
+            ExecuteProgramButton.Name = "ExecuteProgramButton";
+            ExecuteProgramButton.Size = new Size(236, 105);
+            ExecuteProgramButton.TabIndex = 1;
+            ExecuteProgramButton.Text = "Execute Program (Test)";
+            ExecuteProgramButton.UseVisualStyleBackColor = true;
+            ExecuteProgramButton.Click += button1_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(ExecuteProgramButton);
+            Controls.Add(OutputBox);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox OutputBox;
+        private Button ExecuteProgramButton;
     }
 }

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSO_LAB_3", "MSO_LAB_2\MSO_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{EAA7316E-9A7D-4C8A-A282-5895AC15D741}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgrammingLearningApp", "ProgrammingLearningApp\ProgrammingLearningApp.csproj", "{D61E492E-9011-49B0-9E20-4148FA21EDC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammingLearningApp", "ProgrammingLearningApp\ProgrammingLearningApp.csproj", "{D61E492E-9011-49B0-9E20-4148FA21EDC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

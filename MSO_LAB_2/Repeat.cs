@@ -28,9 +28,9 @@ namespace MSO_LAB_3
             }
         }
 
-        public void Log()
+        public string Log()
         {
-            // nothing lol
+            return string.Empty; // still nothing lol
         }
     }
 }

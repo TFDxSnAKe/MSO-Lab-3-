@@ -9,6 +9,6 @@ namespace MSO_LAB_3
     public interface ICommand // lets make it an interface after all 
     {
         void Execute();
-        void Log(); // made this an inheritable func
+        string Log(); // made this an inheritable func
     }
 }

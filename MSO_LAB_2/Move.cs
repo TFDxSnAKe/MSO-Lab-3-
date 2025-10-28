@@ -35,12 +35,12 @@ namespace MSO_LAB_3
                 default:
                     break;
             }
-            Log();
+            // Log(); nope 
         }
 
-        public void Log()
+        public string Log()
         {
-            Console.Write($"Move({_steps}), ");
+            return $"Move({_steps}), ";
         }
     }
 }
