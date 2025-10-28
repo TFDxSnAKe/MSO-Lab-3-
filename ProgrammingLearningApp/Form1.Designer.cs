@@ -30,15 +30,15 @@
         {
             OutputBox = new TextBox();
             ExecuteProgramButton = new Button();
-            EditorWindow = new TextBox();
             SaveButton = new Button();
             OpenProgram = new Button();
+            EditorWindow = new RichTextBox();
             SuspendLayout();
             // 
             // OutputBox
             // 
             OutputBox.BackColor = SystemColors.Window;
-            OutputBox.Font = new Font("Cascadia Code", 15.75F);
+            OutputBox.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             OutputBox.Location = new Point(752, 465);
             OutputBox.Multiline = true;
             OutputBox.Name = "OutputBox";
@@ -57,17 +57,6 @@
             ExecuteProgramButton.Text = "Execute Program";
             ExecuteProgramButton.UseVisualStyleBackColor = true;
             ExecuteProgramButton.Click += button1_Click;
-            // 
-            // EditorWindow
-            // 
-            EditorWindow.Font = new Font("Cascadia Code", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            EditorWindow.Location = new Point(154, 12);
-            EditorWindow.Multiline = true;
-            EditorWindow.Name = "EditorWindow";
-            EditorWindow.ScrollBars = ScrollBars.Both;
-            EditorWindow.Size = new Size(592, 646);
-            EditorWindow.TabIndex = 2;
-            EditorWindow.TextChanged += EditorWindow_TextChanged;
             // 
             // SaveButton
             // 
@@ -89,15 +78,25 @@
             OpenProgram.UseVisualStyleBackColor = true;
             OpenProgram.Click += OpenProgram_Click;
             // 
+            // EditorWindow
+            // 
+            EditorWindow.Font = new Font("Cascadia Code", 15.75F);
+            EditorWindow.Location = new Point(154, 14);
+            EditorWindow.Name = "EditorWindow";
+            EditorWindow.Size = new Size(592, 646);
+            EditorWindow.TabIndex = 2;
+            EditorWindow.Text = "";
+            EditorWindow.TextChanged += EditorWindow_TextChanged_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1068, 670);
+            Controls.Add(EditorWindow);
             Controls.Add(OpenProgram);
             Controls.Add(SaveButton);
-            Controls.Add(EditorWindow);
             Controls.Add(ExecuteProgramButton);
             Controls.Add(OutputBox);
             Name = "Form1";
@@ -111,8 +110,8 @@
 
         private TextBox OutputBox;
         private Button ExecuteProgramButton;
-        private TextBox EditorWindow;
         private Button SaveButton;
         private Button OpenProgram;
+        private RichTextBox EditorWindow;
     }
 }

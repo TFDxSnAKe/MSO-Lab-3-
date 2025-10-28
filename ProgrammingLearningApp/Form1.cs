@@ -18,8 +18,12 @@ namespace ProgrammingLearningApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.Execute(Player);
-            OutputBox.Text = "Output: " + Program.OutputString;
+            if (Program != null)
+            {
+                Program.Execute(Player);
+                OutputBox.Text = "Output: " + Program.OutputString;
+            }
+            else { MessageBox.Show("No program was loaded"); }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,10 +53,7 @@ namespace ProgrammingLearningApp
                 Program = new MSO_LAB_3.Program(player: Player,
                                                 programName: path);
             }
-            else
-            {
-                MessageBox.Show("Invalid file format (Must be a .txt file)");
-            }
+            else { MessageBox.Show("Invalid file format (Must be a .txt file)"); }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -63,6 +64,11 @@ namespace ProgrammingLearningApp
                 string programName = saveFileDialog.FileName + ".txt";
                 File.WriteAllText(programName, EditorWindow.Text);
             }
+        }
+
+        private void EditorWindow_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
