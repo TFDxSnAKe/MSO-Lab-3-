@@ -30,6 +30,7 @@ namespace MSO_LAB_3
                 OutputString += command.Log(); 
             }
             OutputString += $"End state ({p.position.X},{p.position.Y}) facing {p.direction}";
+            // Console.WriteLine(OutputString); // temp
         }
     }
 }

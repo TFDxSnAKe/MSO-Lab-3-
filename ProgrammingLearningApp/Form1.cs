@@ -9,18 +9,15 @@ namespace ProgrammingLearningApp
         public string FilePath;
         public Player Player;
         public MSO_LAB_3.Program Program;
-        //StreamWriter ProgramWriter;
+
         public Form1()
         {
             InitializeComponent();
             Player = new Player();
-            FilePath = PathHelper("Programs\\Basic");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program = new MSO_LAB_3.Program(player: Player,
-                                            programName: FilePath);
             Program.Execute(Player);
             OutputBox.Text = "Output: " + Program.OutputString;
         }
@@ -38,15 +35,9 @@ namespace ProgrammingLearningApp
 
         private void EditorWindow_TextChanged(object sender, EventArgs e)
         {
-            /*
-            var editorLines = EditorWindow.Lines;
-            ProgramWriter = new StreamWriter(PathHelper("Programs\\Test"));
-
-            foreach (var line in editorLines)
-            {
-                ProgramWriter.WriteLine(line);
-            }*/
+            //
         }
+
         private void OpenProgram_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -54,6 +45,9 @@ namespace ProgrammingLearningApp
             {
                 string contents = File.ReadAllText(openFileDialog.FileName);
                 EditorWindow.Text = contents;
+                string path = openFileDialog.FileName; // get the full path to the .txt file in your machine
+                Program = new MSO_LAB_3.Program(player: Player,
+                                                programName: path);
             }
             else
             {
@@ -70,18 +64,5 @@ namespace ProgrammingLearningApp
                 File.WriteAllText(programName, EditorWindow.Text);
             }
         }
-
-
-        /// <summary>
-        /// A little path helper which reuses the old one
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        private string PathHelper(string name)
-        {
-            return App.GetPath(name);
-        }
-
-
     }
 }

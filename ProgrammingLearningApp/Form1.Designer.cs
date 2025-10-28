@@ -54,7 +54,7 @@
             ExecuteProgramButton.Name = "ExecuteProgramButton";
             ExecuteProgramButton.Size = new Size(136, 38);
             ExecuteProgramButton.TabIndex = 1;
-            ExecuteProgramButton.Text = "Execute Program (Test)";
+            ExecuteProgramButton.Text = "Execute Program";
             ExecuteProgramButton.UseVisualStyleBackColor = true;
             ExecuteProgramButton.Click += button1_Click;
             // 
