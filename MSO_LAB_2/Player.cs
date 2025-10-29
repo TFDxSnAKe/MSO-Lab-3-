@@ -18,7 +18,11 @@ namespace MSO_LAB_3
            //
         }
 
-
+        public void Reset()
+        {
+            this.position = Vector2.Zero;
+            this.direction = Direction.East;
+        }
         public void LogLocation()
         {
             Console.WriteLine("Player is at: " + position.X + ", " + position.Y );

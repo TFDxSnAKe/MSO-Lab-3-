@@ -16,11 +16,21 @@ namespace MSO_LAB_3
         public TextFileRead(Player p, string programName)
         {
             _player = p; 
-            var allLines = File.ReadAllLines(programName).ToList();
             var ind = 0;
+            var allLines = File.ReadAllLines(programName).ToList();
             ProgramCommands = ReadCommands(cmds: allLines,
                                            index: ref ind,
                                            indentCount: 0);
+        }
+
+        public TextFileRead(Player p, string[] programLines)
+        {
+            _player = p;
+            var ind = 0;
+            var allLines = programLines.ToList();
+            ProgramCommands = ReadCommands(cmds: allLines,
+                               index: ref ind,
+                               indentCount: 0);
         }
 
         private List<ICommand> ReadCommands(List<string> cmds, ref int index, int indentCount)

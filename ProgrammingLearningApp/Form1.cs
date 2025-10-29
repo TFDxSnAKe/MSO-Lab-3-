@@ -20,7 +20,11 @@ namespace ProgrammingLearningApp
         {
             if (Program != null)
             {
+                var lines = EditorWindow.Text.Split('\n');
+                Program = new MSO_LAB_3.Program(player: Player,
+                                                programLines: lines);
                 Program.Execute(Player);
+                OutputBox.Clear(); // Don't forget to clear the previous text if there
                 OutputBox.Text = "Output: " + Program.OutputString;
             }
             else { MessageBox.Show("No program was loaded"); }
@@ -33,7 +37,7 @@ namespace ProgrammingLearningApp
 
         private void OutputBox_TextChanged(object sender, EventArgs e)
         {
-            // kinda useless
+            // 
         }
 
 

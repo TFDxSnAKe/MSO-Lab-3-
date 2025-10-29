@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Numerics;
 
 namespace MSO_LAB_3
 {
@@ -15,15 +16,22 @@ namespace MSO_LAB_3
         // == New stuff == 
         public string OutputString; // used for the textbox in the forms app 
 
-        // constructor based off of list of commands
+        // constructor based off of list of commands 
         public Program(Player player, string programName) // keep program logic seperate from main io interaction with user
         {
             _textFileRead = new(p: player, programName: programName);
             _commands = _textFileRead.ProgramCommands; // throw the read commands into the list here
         }
 
+        public Program(Player player, string[] programLines)
+        {
+            _textFileRead = new(p: player, programLines);
+            _commands = _textFileRead.ProgramCommands;
+        }
+
         public void Execute(Player p)
         {
+            p.Reset(); // reset position and direction before executing commands 
             foreach (ICommand command in _commands)
             {
                 command.Execute();  
