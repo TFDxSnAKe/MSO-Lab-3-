@@ -18,16 +18,10 @@ namespace ProgrammingLearningApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (Program != null)
-            //{
-                var lines = EditorWindow.Text.Split('\n');
-                Program = new MSO_LAB_3.Program(player: Player,
-                                                programLines: lines);
-                Program.Execute(Player);
-                OutputBox.Clear(); // Don't forget to clear the previous text if there
-                OutputBox.Text = "Output: " + Program.OutputString;
-            //}
-            //else { MessageBox.Show("No program was loaded"); }
+            UpdateProgram();
+            Program.Execute(Player);
+            OutputBox.Clear(); // Don't forget to clear the previous text if there
+            OutputBox.Text = "Output: " + Program.OutputString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,12 +32,6 @@ namespace ProgrammingLearningApp
         private void OutputBox_TextChanged(object sender, EventArgs e)
         {
             // 
-        }
-
-
-        private void EditorWindow_TextChanged(object sender, EventArgs e)
-        {
-            //
         }
 
         private void OpenProgram_Click(object sender, EventArgs e)
@@ -72,7 +60,21 @@ namespace ProgrammingLearningApp
 
         private void EditorWindow_TextChanged_1(object sender, EventArgs e)
         {
+            
+        }
 
+        private void MetricsButton_Click(object sender, EventArgs e)
+        {
+            UpdateProgram();
+            var metrics = new Metrics(commands: Program._commands);
+            OutputBox.Text = metrics.DisplayMetrics();
+        }
+
+        private void UpdateProgram()
+        {
+            var lines = EditorWindow.Text.Split('\n');
+            Program = new MSO_LAB_3.Program(player: Player,
+                                            programLines: lines);
         }
     }
 }

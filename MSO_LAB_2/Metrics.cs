@@ -12,15 +12,20 @@ namespace MSO_LAB_3
         public int _maxNest;
         public int _noOfRepeats;
 
+        // == new
+        public string MetricsString;
+        public int NoOfInvalidCmds;
+
         public Metrics(List<ICommand> commands)
         {
             CalcMetrics(commands);
         }
-        public void DisplayMetrics()
+        public string DisplayMetrics()
         {
-            Console.WriteLine($"No. of commands: {_noOfCmds}\n" +
-                              $"Max nesting:     {_maxNest}\n" +
-                              $"No. of repeats:  {_noOfRepeats}");
+            return MetricsString = $"No. of valid commands:   {_noOfCmds} \r\n" +
+                                   $"No. of invalid commands: {NoOfInvalidCmds} \r\n" + 
+                                   $"Maximum nesting:         {_maxNest} \r\n" +
+                                   $"No. of repeats:          {_noOfRepeats}";
         }
 
 
@@ -28,8 +33,6 @@ namespace MSO_LAB_3
         {
             foreach (var cmd in cmds)
             {
-                _noOfCmds++;
-
                 if (cmd is Repeat r)
                 {
                     _noOfRepeats++;
@@ -39,7 +42,12 @@ namespace MSO_LAB_3
                     }
                     // recursively call on the repeat object and keep counting there
                     CalcMetrics(r._commands, nest + 1);
+                }                
+                else if (cmd is not InvalidCmd) 
+                {
+                    _noOfCmds++;
                 }
+                else { NoOfInvalidCmds++; } // checks failed, it's invalid                
             }
         }
     }

@@ -67,7 +67,7 @@ namespace MSO_LAB_3
                 else if (currLine.StartsWith("Move"))
                 {
                     var temp = currLine.Split(' ');
-                    if (IsParsable(temp[1]))
+                    if (temp.Length == 2 && IsParsable(temp[1]))
                     {
                         var MoveCmd = new Move(_player, count: int.Parse(temp[1]));
                         commands.Add(MoveCmd);
@@ -119,7 +119,6 @@ namespace MSO_LAB_3
             }
             return i;
         }
-
 
         private bool IsParsable(string s)
         {

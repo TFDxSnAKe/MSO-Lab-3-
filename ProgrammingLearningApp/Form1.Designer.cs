@@ -33,6 +33,7 @@
             SaveButton = new Button();
             OpenProgram = new Button();
             EditorWindow = new RichTextBox();
+            MetricsButton = new Button();
             SuspendLayout();
             // 
             // OutputBox
@@ -88,12 +89,23 @@
             EditorWindow.Text = "";
             EditorWindow.TextChanged += EditorWindow_TextChanged_1;
             // 
+            // MetricsButton
+            // 
+            MetricsButton.Location = new Point(12, 146);
+            MetricsButton.Name = "MetricsButton";
+            MetricsButton.Size = new Size(136, 38);
+            MetricsButton.TabIndex = 5;
+            MetricsButton.Text = "Calculate Metrics";
+            MetricsButton.UseVisualStyleBackColor = true;
+            MetricsButton.Click += MetricsButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1068, 670);
+            Controls.Add(MetricsButton);
             Controls.Add(EditorWindow);
             Controls.Add(OpenProgram);
             Controls.Add(SaveButton);
@@ -114,5 +126,6 @@
         private Button SaveButton;
         private Button OpenProgram;
         private RichTextBox EditorWindow;
+        private Button MetricsButton;
     }
 }
