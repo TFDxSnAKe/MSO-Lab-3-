@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             OutputBox = new TextBox();
             ExecuteProgramButton = new Button();
-            SaveButton = new Button();
-            OpenProgram = new Button();
             EditorWindow = new RichTextBox();
             MetricsButton = new Button();
+            toolStrip1 = new ToolStrip();
+            programStripButton = new ToolStripDropDownButton();
+            exampleProgramToolStripMenuItem = new ToolStripMenuItem();
+            basicToolStripMenuItem = new ToolStripMenuItem();
+            advancedToolStripMenuItem = new ToolStripMenuItem();
+            expertToolStripMenuItem = new ToolStripMenuItem();
+            openProgramToolStripMenuItem = new ToolStripMenuItem();
+            saveProgramToolStripMenuItem = new ToolStripMenuItem();
+            toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // OutputBox
@@ -51,7 +59,7 @@
             // 
             // ExecuteProgramButton
             // 
-            ExecuteProgramButton.Location = new Point(12, 102);
+            ExecuteProgramButton.Location = new Point(12, 30);
             ExecuteProgramButton.Name = "ExecuteProgramButton";
             ExecuteProgramButton.Size = new Size(136, 38);
             ExecuteProgramButton.TabIndex = 1;
@@ -59,39 +67,19 @@
             ExecuteProgramButton.UseVisualStyleBackColor = true;
             ExecuteProgramButton.Click += button1_Click;
             // 
-            // SaveButton
-            // 
-            SaveButton.Location = new Point(12, 58);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(136, 38);
-            SaveButton.TabIndex = 3;
-            SaveButton.Text = "Save Program";
-            SaveButton.UseVisualStyleBackColor = true;
-            SaveButton.Click += SaveButton_Click;
-            // 
-            // OpenProgram
-            // 
-            OpenProgram.Location = new Point(12, 14);
-            OpenProgram.Name = "OpenProgram";
-            OpenProgram.Size = new Size(136, 38);
-            OpenProgram.TabIndex = 4;
-            OpenProgram.Text = "Open Program";
-            OpenProgram.UseVisualStyleBackColor = true;
-            OpenProgram.Click += OpenProgram_Click;
-            // 
             // EditorWindow
             // 
             EditorWindow.Font = new Font("Cascadia Code", 15.75F);
-            EditorWindow.Location = new Point(154, 14);
+            EditorWindow.Location = new Point(154, 28);
             EditorWindow.Name = "EditorWindow";
-            EditorWindow.Size = new Size(592, 646);
+            EditorWindow.Size = new Size(592, 632);
             EditorWindow.TabIndex = 2;
             EditorWindow.Text = "";
             EditorWindow.TextChanged += EditorWindow_TextChanged_1;
             // 
             // MetricsButton
             // 
-            MetricsButton.Location = new Point(12, 146);
+            MetricsButton.Location = new Point(12, 74);
             MetricsButton.Name = "MetricsButton";
             MetricsButton.Size = new Size(136, 38);
             MetricsButton.TabIndex = 5;
@@ -99,22 +87,86 @@
             MetricsButton.UseVisualStyleBackColor = true;
             MetricsButton.Click += MetricsButton_Click;
             // 
+            // toolStrip1
+            // 
+            toolStrip1.Items.AddRange(new ToolStripItem[] { programStripButton });
+            toolStrip1.Location = new Point(0, 0);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new Size(1068, 25);
+            toolStrip1.TabIndex = 6;
+            toolStrip1.Text = "toolStrip1";
+            // 
+            // programStripButton
+            // 
+            programStripButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            programStripButton.DropDownItems.AddRange(new ToolStripItem[] { exampleProgramToolStripMenuItem, openProgramToolStripMenuItem, saveProgramToolStripMenuItem });
+            programStripButton.Image = (Image)resources.GetObject("programStripButton.Image");
+            programStripButton.ImageTransparentColor = Color.Magenta;
+            programStripButton.Name = "programStripButton";
+            programStripButton.Size = new Size(95, 22);
+            programStripButton.Text = "Load Program";
+            // 
+            // exampleProgramToolStripMenuItem
+            // 
+            exampleProgramToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { basicToolStripMenuItem, advancedToolStripMenuItem, expertToolStripMenuItem });
+            exampleProgramToolStripMenuItem.Name = "exampleProgramToolStripMenuItem";
+            exampleProgramToolStripMenuItem.Size = new Size(204, 22);
+            exampleProgramToolStripMenuItem.Text = "Example Program";
+            // 
+            // basicToolStripMenuItem
+            // 
+            basicToolStripMenuItem.Name = "basicToolStripMenuItem";
+            basicToolStripMenuItem.Size = new Size(180, 22);
+            basicToolStripMenuItem.Text = "Basic";
+            basicToolStripMenuItem.Click += basicToolStripMenuItem_Click;
+            // 
+            // advancedToolStripMenuItem
+            // 
+            advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
+            advancedToolStripMenuItem.Size = new Size(180, 22);
+            advancedToolStripMenuItem.Text = "Advanced";
+            advancedToolStripMenuItem.Click += advancedToolStripMenuItem_Click;
+            // 
+            // expertToolStripMenuItem
+            // 
+            expertToolStripMenuItem.Name = "expertToolStripMenuItem";
+            expertToolStripMenuItem.Size = new Size(180, 22);
+            expertToolStripMenuItem.Text = "Expert";
+            expertToolStripMenuItem.Click += expertToolStripMenuItem_Click;
+            // 
+            // openProgramToolStripMenuItem
+            // 
+            openProgramToolStripMenuItem.Name = "openProgramToolStripMenuItem";
+            openProgramToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
+            openProgramToolStripMenuItem.Size = new Size(204, 22);
+            openProgramToolStripMenuItem.Text = "Open Program...";
+            openProgramToolStripMenuItem.Click += openProgramToolStripMenuItem_Click;
+            // 
+            // saveProgramToolStripMenuItem
+            // 
+            saveProgramToolStripMenuItem.Name = "saveProgramToolStripMenuItem";
+            saveProgramToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
+            saveProgramToolStripMenuItem.Size = new Size(204, 22);
+            saveProgramToolStripMenuItem.Text = "Save Program";
+            saveProgramToolStripMenuItem.Click += saveProgramToolStripMenuItem_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1068, 670);
+            Controls.Add(toolStrip1);
             Controls.Add(MetricsButton);
             Controls.Add(EditorWindow);
-            Controls.Add(OpenProgram);
-            Controls.Add(SaveButton);
             Controls.Add(ExecuteProgramButton);
             Controls.Add(OutputBox);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -123,9 +175,15 @@
 
         private TextBox OutputBox;
         private Button ExecuteProgramButton;
-        private Button SaveButton;
-        private Button OpenProgram;
         private RichTextBox EditorWindow;
         private Button MetricsButton;
+        private ToolStrip toolStrip1;
+        private ToolStripDropDownButton programStripButton;
+        private ToolStripMenuItem exampleProgramToolStripMenuItem;
+        private ToolStripMenuItem openProgramToolStripMenuItem;
+        private ToolStripMenuItem saveProgramToolStripMenuItem;
+        private ToolStripMenuItem basicToolStripMenuItem;
+        private ToolStripMenuItem advancedToolStripMenuItem;
+        private ToolStripMenuItem expertToolStripMenuItem;
     }
 }

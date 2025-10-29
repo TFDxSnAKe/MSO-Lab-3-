@@ -34,33 +34,9 @@ namespace ProgrammingLearningApp
             // 
         }
 
-        private void OpenProgram_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.FileName.Contains(".txt"))
-            {
-                string contents = File.ReadAllText(openFileDialog.FileName);
-                EditorWindow.Text = contents;
-                string path = openFileDialog.FileName; // get the full path to the .txt file in your machine
-                Program = new MSO_LAB_3.Program(player: Player,
-                                                programName: path);
-            }
-            else { MessageBox.Show("Invalid file format (Must be a .txt file)"); }
-        }
-
-        private void SaveButton_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string programName = saveFileDialog.FileName + ".txt";
-                File.WriteAllText(programName, EditorWindow.Text);
-            }
-        }
-
         private void EditorWindow_TextChanged_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void MetricsButton_Click(object sender, EventArgs e)
@@ -76,5 +52,59 @@ namespace ProgrammingLearningApp
             Program = new MSO_LAB_3.Program(player: Player,
                                             programLines: lines);
         }
+
+        private void openProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.FileName.Contains(".txt"))
+            {
+                string contents = File.ReadAllText(openFileDialog.FileName);
+                EditorWindow.Text = contents;
+                string path = openFileDialog.FileName; // get the full path to the .txt file in your machine
+                Program = new MSO_LAB_3.Program(player: Player,
+                                                programName: path);
+            }
+            else { MessageBox.Show("Invalid file format (Must be a .txt file)"); }
+        }
+
+        private void saveProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string programName = saveFileDialog.FileName + ".txt";
+                File.WriteAllText(programName, EditorWindow.Text);
+            }
+        }
+
+        private void basicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadExampleIntoBox("Basic");
+        }
+        private void advancedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadExampleIntoBox("Advanced");
+        }
+
+        private void expertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadExampleIntoBox("Expert");
+        }
+        private void LoadExampleIntoBox(string name)
+        {
+            string path = this.PathHelper(name);
+            EditorWindow.Text = File.ReadAllText(@path);
+            Program = new MSO_LAB_3.Program(player: Player,
+                                            programName: path);
+        }
+
+
+        // .txt file path finding helper
+        private string PathHelper(string name)
+        {
+            return App.GetPath(name);
+        }
+
+
     }
 }
