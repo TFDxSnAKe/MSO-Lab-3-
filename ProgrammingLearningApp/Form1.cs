@@ -18,16 +18,16 @@ namespace ProgrammingLearningApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Program != null)
-            {
+            //if (Program != null)
+            //{
                 var lines = EditorWindow.Text.Split('\n');
                 Program = new MSO_LAB_3.Program(player: Player,
                                                 programLines: lines);
                 Program.Execute(Player);
                 OutputBox.Clear(); // Don't forget to clear the previous text if there
                 OutputBox.Text = "Output: " + Program.OutputString;
-            }
-            else { MessageBox.Show("No program was loaded"); }
+            //}
+            //else { MessageBox.Show("No program was loaded"); }
         }
 
         private void Form1_Load(object sender, EventArgs e)

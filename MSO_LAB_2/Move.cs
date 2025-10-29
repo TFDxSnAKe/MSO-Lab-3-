@@ -35,7 +35,6 @@ namespace MSO_LAB_3
                 default:
                     break;
             }
-            // Log(); nope 
         }
 
         public string Log()

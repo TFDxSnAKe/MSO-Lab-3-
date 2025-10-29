@@ -21,8 +21,10 @@ namespace MSO_LAB_3
             {
                 TurnLeft(_player);
             }
-            else { TurnRight(_player); };
-            // Log(); no more need here
+            else if (_dir == "right")
+            {
+                TurnRight(_player);
+            }
         }
 
         public void TurnLeft(Player p)
@@ -37,7 +39,12 @@ namespace MSO_LAB_3
 
         public string Log()
         {
-            return $"Turn({_dir}), ";
+            if (_dir == "left" || _dir == "right")
+            {
+                return $"Turn({_dir}), ";
+            }
+            var dummy = new InvalidCmd("Incorrect syntax after 'Turn'");
+            return dummy.Log();        
         }
     }
 }

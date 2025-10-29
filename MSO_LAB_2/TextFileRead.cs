@@ -67,8 +67,16 @@ namespace MSO_LAB_3
                 else if (currLine.StartsWith("Move"))
                 {
                     var temp = currLine.Split(' ');
-                    var MoveCmd = new Move(_player, count: int.Parse(temp[1]));
-                    commands.Add(MoveCmd);
+                    if (IsParsable(temp[1]))
+                    {
+                        var MoveCmd = new Move(_player, count: int.Parse(temp[1]));
+                        commands.Add(MoveCmd);
+                    }
+                    else
+                    {
+                        var Dummy = new InvalidCmd("Incorrect syntax after 'Move'");
+                        commands.Add(Dummy);
+                    }
                     index++;
                 }
                 else if (currLine.StartsWith("Repeat"))
@@ -98,6 +106,12 @@ namespace MSO_LAB_3
                 else { break; }
             }
             return i;
+        }
+
+
+        private bool IsParsable(string s)
+        {
+            return int.TryParse(s, out var p);
         }
     }
 }
