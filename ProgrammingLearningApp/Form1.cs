@@ -1,12 +1,13 @@
 using MSO_LAB_3;
 using System.Numerics;
+using System.Text.RegularExpressions;
 
 namespace ProgrammingLearningApp
 {
     public partial class Form1 : Form
     {
 
-        public string FilePath;
+        public string? FilePath;
         public Player Player;
         public MSO_LAB_3.Program Program;
 
@@ -20,6 +21,7 @@ namespace ProgrammingLearningApp
         {
             if (Program != null)
             {
+                
                 Program.Execute(Player);
                 OutputBox.Text = "Output: " + Program.OutputString;
             }
@@ -49,9 +51,9 @@ namespace ProgrammingLearningApp
             {
                 string contents = File.ReadAllText(openFileDialog.FileName);
                 EditorWindow.Text = contents;
-                string path = openFileDialog.FileName; // get the full path to the .txt file in your machine
+                FilePath = openFileDialog.FileName; // get the full path to the .txt file in your machine
                 Program = new MSO_LAB_3.Program(player: Player,
-                                                programName: path);
+                                                programName: FilePath);
             }
             else { MessageBox.Show("Invalid file format (Must be a .txt file)"); }
         }
@@ -68,7 +70,20 @@ namespace ProgrammingLearningApp
 
         private void EditorWindow_TextChanged_1(object sender, EventArgs e)
         {
+            HighlightSyntax(EditorWindow);
+        }
 
+        private void HighlightSyntax(RichTextBox textBox)
+        {
+            Regex regex = new Regex("Turn");
+
+            // this works terribly and I'm not sure if I want to bother with syntax highlighting anymore
+            foreach (Match match in regex.Matches(textBox.Text))
+            {
+                textBox.Select(match.Index, match.Length);
+                textBox.SelectionColor = Color.Red;
+            }
+            textBox.DeselectAll();
         }
     }
 }
