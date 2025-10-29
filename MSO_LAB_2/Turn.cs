@@ -43,6 +43,7 @@ namespace MSO_LAB_3
             {
                 return $"Turn({_dir}), ";
             }
+            // error handling
             var dummy = new InvalidCmd("Incorrect syntax after 'Turn'");
             return dummy.Log();        
         }

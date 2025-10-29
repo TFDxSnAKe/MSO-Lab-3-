@@ -74,6 +74,7 @@ namespace MSO_LAB_3
                     }
                     else
                     {
+                        // error handling
                         var Dummy = new InvalidCmd("Incorrect syntax after 'Move'");
                         commands.Add(Dummy);
                     }
@@ -82,11 +83,22 @@ namespace MSO_LAB_3
                 else if (currLine.StartsWith("Repeat"))
                 {
                     var temp = currLine.Split(' ');
-                    index++;
-                    List<ICommand> nestedList = ReadCommands(cmds, ref index, currIndent + 3);
-                    var RepeatCmd = new Repeat(commands: nestedList,
-                                               counter: int.Parse(temp[1]));
-                    commands.Add(RepeatCmd);
+                    // checking if the curr line consists of ["Repeat", some int, "times"]
+                    if (temp.Length == 3 && IsParsable(temp[1]) && temp[2] == "times")
+                    {
+                        index++;
+                        List<ICommand> nestedList = ReadCommands(cmds, ref index, currIndent + 3);
+                        var RepeatCmd = new Repeat(commands: nestedList,
+                                                   counter: int.Parse(temp[1]));
+                        commands.Add(RepeatCmd);
+                    }
+                    else
+                    {
+                        // error handling
+                        var dummy = new InvalidCmd("Incorrect syntax after 'Repeat' (No valid number or 'times' at end)");
+                        commands.Add(dummy);
+                        index++;
+                    }
                 }
                 else { index++; }
             }
