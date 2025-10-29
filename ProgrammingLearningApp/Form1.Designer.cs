@@ -116,20 +116,23 @@
             // basicToolStripMenuItem
             // 
             basicToolStripMenuItem.Name = "basicToolStripMenuItem";
-            basicToolStripMenuItem.Size = new Size(127, 22);
+            basicToolStripMenuItem.Size = new Size(180, 22);
             basicToolStripMenuItem.Text = "Basic";
+            basicToolStripMenuItem.Click += basicToolStripMenuItem_Click;
             // 
             // advancedToolStripMenuItem
             // 
             advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            advancedToolStripMenuItem.Size = new Size(127, 22);
+            advancedToolStripMenuItem.Size = new Size(180, 22);
             advancedToolStripMenuItem.Text = "Advanced";
+            advancedToolStripMenuItem.Click += advancedToolStripMenuItem_Click;
             // 
             // expertToolStripMenuItem
             // 
             expertToolStripMenuItem.Name = "expertToolStripMenuItem";
-            expertToolStripMenuItem.Size = new Size(127, 22);
+            expertToolStripMenuItem.Size = new Size(180, 22);
             expertToolStripMenuItem.Text = "Expert";
+            expertToolStripMenuItem.Click += expertToolStripMenuItem_Click;
             // 
             // openProgramToolStripMenuItem
             // 
