@@ -106,9 +106,9 @@ namespace ProgrammingLearningApp
             return App.GetPath(name);
         }
 
-        private const int GridWidth = 20;
-        private const int GridHeight = 20;
-        private const int CellSize = 30;
+        private const int GridWidth = 10;
+        private const int GridHeight = 10;
+        private const int CellSize = 50;
 
 
         private void GridPanel_Paint(object? sender, PaintEventArgs e)

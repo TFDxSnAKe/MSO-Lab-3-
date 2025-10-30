@@ -76,7 +76,7 @@
             EditorWindow.Location = new Point(220, 47);
             EditorWindow.Margin = new Padding(4, 5, 4, 5);
             EditorWindow.Name = "EditorWindow";
-            EditorWindow.Size = new Size(844, 1051);
+            EditorWindow.Size = new Size(779, 1051);
             EditorWindow.TabIndex = 2;
             EditorWindow.Text = "";
             EditorWindow.TextChanged += EditorWindow_TextChanged_1;
@@ -160,10 +160,12 @@
             // GridCanvas
             // 
             GridCanvas.BackColor = SystemColors.GradientActiveCaption;
-            GridCanvas.BorderStyle = BorderStyle.Fixed3D;
-            GridCanvas.Location = new Point(715, 69);
+            GridCanvas.BorderStyle = BorderStyle.FixedSingle;
+            GridCanvas.Location = new Point(1014, 91);
+            GridCanvas.MaximumSize = new Size(500, 500);
+            GridCanvas.MinimumSize = new Size(500, 500);
             GridCanvas.Name = "GridCanvas";
-            GridCanvas.Size = new Size(792, 642);
+            GridCanvas.Size = new Size(500, 500);
             GridCanvas.TabIndex = 7;
             GridCanvas.Paint += GridPanel_Paint;
             // 
