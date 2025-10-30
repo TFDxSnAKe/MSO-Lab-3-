@@ -1,5 +1,6 @@
 using MSO_LAB_3;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace ProgrammingLearningApp
 {
@@ -105,6 +106,32 @@ namespace ProgrammingLearningApp
             return App.GetPath(name);
         }
 
+        private const int GridWidth = 20;
+        private const int GridHeight = 20;
+        private const int CellSize = 30;
 
+
+        private void GridPanel_Paint(object? sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (var pen = new Pen(Color.Black, 1))
+            {
+                // verticale lijnen
+                for (int x = 0; x <= GridWidth; x++)
+                {
+                    float xPos = x * CellSize;
+                    g.DrawLine(pen, xPos, 0, xPos, GridHeight * CellSize);
+                }
+
+                // horizontale lijnen
+                for (int y = 0; y <= GridHeight; y++)
+                {
+                    float yPos = y * CellSize;
+                    g.DrawLine(pen, 0, yPos, GridWidth * CellSize, yPos);
+                }
+            }
+        }
     }
 }
