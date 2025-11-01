@@ -1,5 +1,6 @@
 using MSO_LAB_3;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 
 namespace ProgrammingLearningApp
 {
@@ -7,15 +8,16 @@ namespace ProgrammingLearningApp
     {
 
         public string FilePath;
-        public Player Player;
+        private Player _player;
         public MSO_LAB_3.Program Program;
         public TextFileRead textFileReader;
 
-        public Form1()
+        public Form1(Player player)
         {
             InitializeComponent();
-            Player = new Player();
-            Program = new MSO_LAB_3.Program();
+            _player = player;
+            _player.OnPlayerChanged += (p) => GridPanel.Invalidate();
+            DoubleBuffered = true;
         }
 
         // This method is responsible for executing a program
@@ -54,6 +56,8 @@ namespace ProgrammingLearningApp
         {
             var lines = EditorWindow.Text.Split('\n');
             textFileReader = new TextFileRead(lines);
+            Program = new MSO_LAB_3.Program(player: _player,
+                                            programLines: lines);
         }
 
         private void openProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,5 +108,36 @@ namespace ProgrammingLearningApp
         {
             return App.GetPath(name);
         }
+
+        private const int GridWidth = 10;
+        private const int GridHeight = 10;
+        private const int CellSize = 50;
+
+        
+        public void GridPanel_Paint(object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+            int GridWidth = 10;
+            int GridHeight = 10;
+            int CellSize = 50;
+
+            using (var pen = new Pen(Color.Black))
+            {
+                for (int x = 0; x <= GridWidth; x++)
+                    g.DrawLine(pen, x * CellSize, 0, x * CellSize, GridHeight * CellSize);
+                for (int y = 0; y <= GridHeight; y++)
+                    g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
+            }
+
+            // speler tekenen (als die bestaat)
+            if (_player != null)
+            {
+                var pos = _player.position;
+                float px = pos.X * CellSize;
+                float py = pos.Y * CellSize;
+                g.FillEllipse(Brushes.Red, px, py, CellSize, CellSize);
+            }
+        }
+       
     }
 }

@@ -10,12 +10,23 @@ namespace MSO_LAB_3
 {
     public class Player
     {
-        public Vector2 position = Vector2.Zero; // changed to vec2 for easy addition 
-        public Direction direction = Direction.East;
+        public event Action<Player>? OnPlayerChanged;
 
-        public Player()
+        public Vector2 _position; // changed to vec2 for easy addition 
+        public Vector2 position
         {
-           //
+            get => _position;
+            set
+            {
+                _position = value;
+                OnPlayerChanged?.Invoke(this);
+            }
+        }
+        public Direction direction = Direction.North;
+
+        public Player(Vector2 start)
+        {
+           position = start;
         }
 
         public void Reset()

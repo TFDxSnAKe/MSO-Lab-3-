@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Numerics;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace MSO_LAB_3
 {
     public class App
     {
-        static public Player player = new();
+        static public Player player = new(Vector2.Zero);
         static public Program program = new();
         static void Main(string[] args)
         {

@@ -41,6 +41,7 @@
             expertToolStripMenuItem = new ToolStripMenuItem();
             openProgramToolStripMenuItem = new ToolStripMenuItem();
             saveProgramToolStripMenuItem = new ToolStripMenuItem();
+            GridPanel = new Panel();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -72,7 +73,7 @@
             EditorWindow.Font = new Font("Cascadia Code", 15.75F);
             EditorWindow.Location = new Point(154, 28);
             EditorWindow.Name = "EditorWindow";
-            EditorWindow.Size = new Size(592, 632);
+            EditorWindow.Size = new Size(546, 632);
             EditorWindow.TabIndex = 2;
             EditorWindow.Text = "";
             EditorWindow.TextChanged += EditorWindow_TextChanged_1;
@@ -89,9 +90,11 @@
             // 
             // toolStrip1
             // 
+            toolStrip1.ImageScalingSize = new Size(24, 24);
             toolStrip1.Items.AddRange(new ToolStripItem[] { programStripButton });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
+            toolStrip1.Padding = new Padding(0, 0, 2, 0);
             toolStrip1.Size = new Size(1068, 25);
             toolStrip1.TabIndex = 6;
             toolStrip1.Text = "toolStrip1";
@@ -116,21 +119,21 @@
             // basicToolStripMenuItem
             // 
             basicToolStripMenuItem.Name = "basicToolStripMenuItem";
-            basicToolStripMenuItem.Size = new Size(180, 22);
+            basicToolStripMenuItem.Size = new Size(127, 22);
             basicToolStripMenuItem.Text = "Basic";
             basicToolStripMenuItem.Click += basicToolStripMenuItem_Click;
             // 
             // advancedToolStripMenuItem
             // 
             advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
-            advancedToolStripMenuItem.Size = new Size(180, 22);
+            advancedToolStripMenuItem.Size = new Size(127, 22);
             advancedToolStripMenuItem.Text = "Advanced";
             advancedToolStripMenuItem.Click += advancedToolStripMenuItem_Click;
             // 
             // expertToolStripMenuItem
             // 
             expertToolStripMenuItem.Name = "expertToolStripMenuItem";
-            expertToolStripMenuItem.Size = new Size(180, 22);
+            expertToolStripMenuItem.Size = new Size(127, 22);
             expertToolStripMenuItem.Text = "Expert";
             expertToolStripMenuItem.Click += expertToolStripMenuItem_Click;
             // 
@@ -150,12 +153,25 @@
             saveProgramToolStripMenuItem.Text = "Save Program";
             saveProgramToolStripMenuItem.Click += saveProgramToolStripMenuItem_Click;
             // 
+            // GridPanel
+            // 
+            GridPanel.BackColor = SystemColors.GradientActiveCaption;
+            GridPanel.Location = new Point(710, 55);
+            GridPanel.Margin = new Padding(2);
+            GridPanel.MaximumSize = new Size(351, 301);
+            GridPanel.MinimumSize = new Size(351, 301);
+            GridPanel.Name = "GridPanel";
+            GridPanel.Size = new Size(351, 301);
+            GridPanel.TabIndex = 7;
+            GridPanel.Paint += GridPanel_Paint;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1068, 670);
+            Controls.Add(GridPanel);
             Controls.Add(toolStrip1);
             Controls.Add(MetricsButton);
             Controls.Add(EditorWindow);
@@ -185,5 +201,6 @@
         private ToolStripMenuItem basicToolStripMenuItem;
         private ToolStripMenuItem advancedToolStripMenuItem;
         private ToolStripMenuItem expertToolStripMenuItem;
+        private Panel GridPanel;
     }
 }
