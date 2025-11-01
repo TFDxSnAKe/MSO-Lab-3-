@@ -17,29 +17,21 @@ namespace MSO_LAB_3
             ExtractGrid(filePath);
         }
 
-
-
         public void ExtractGrid(string path)
         {
             StreamReader reader = new StreamReader(path);
-            //var lines = new List<string?>();
             var line = reader.ReadLine();
             int y = 0;
             while (line != null)
             {
-                Helper(line, y);
+                int x = 0;
+                foreach (char c in line)
+                {
+                    Grid[x, y] = c;
+                    x++;
+                }
                 y++;
                 line = reader.ReadLine();
-            }
-        }
-
-        public void Helper(string lines, int y)
-        {
-            int x = 0;
-            foreach (char c in lines)
-            {
-                Grid[x, y] = c;
-                x++;
             }
         }
     }

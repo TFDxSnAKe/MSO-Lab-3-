@@ -65,7 +65,7 @@ namespace MSO_LAB_3
                     }
                     else
                     {
-                        ErrorHandler(commands,
+                        HandleError(commands,
                                      errorMessage: "Incorrect syntax after 'Turn'");
                     }
 
@@ -82,7 +82,7 @@ namespace MSO_LAB_3
                     }
                     else
                     {
-                        ErrorHandler(commands,
+                        HandleError(commands,
                                      errorMessage: "Incorrect syntax after 'Move'");
                     }
                     index++;
@@ -101,7 +101,7 @@ namespace MSO_LAB_3
                     }
                     else
                     {
-                        ErrorHandler(commands,
+                        HandleError(commands,
                                      errorMessage: "Incorrect syntax after 'Repeat' (No valid number or 'times' at end)");
                         index++;
                     }
@@ -111,7 +111,7 @@ namespace MSO_LAB_3
             return commands;
         }
 
-        private static void ErrorHandler(List<ICommand> commands, string errorMessage)
+        private static void HandleError(List<ICommand> commands, string errorMessage)
         {
             var Dummy = new InvalidCmd(errorMessage + "\r\n");
             commands.Add(Dummy);
