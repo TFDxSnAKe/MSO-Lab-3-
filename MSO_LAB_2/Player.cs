@@ -12,7 +12,7 @@ namespace MSO_LAB_3
     {
         public event Action<Player>? OnPlayerChanged;
 
-        public Vector2 _position; // changed to vec2 for easy addition 
+        public Vector2 _position = Vector2.Zero; // changed to vec2 for easy addition 
         public Vector2 position
         {
             get => _position;
@@ -24,9 +24,9 @@ namespace MSO_LAB_3
         }
         public Direction direction = Direction.North;
 
-        public Player(Vector2 start)
+        public Player()
         {
-           position = start;
+           position = Vector2.Zero;
         }
 
         public void Reset()

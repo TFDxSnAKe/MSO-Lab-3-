@@ -15,6 +15,7 @@ namespace ProgrammingLearningApp
         public Form1(Player player)
         {
             InitializeComponent();
+            Program = new MSO_LAB_3.Program();
             _player = player;
             _player.OnPlayerChanged += (p) => GridPanel.Invalidate();
             DoubleBuffered = true;
@@ -25,7 +26,7 @@ namespace ProgrammingLearningApp
         {
             UpdateProgram();
             Program.OutputString = "";
-            Program.Execute(Player, textFileReader.ProgramCommands);
+            Program.Execute(_player, textFileReader.ProgramCommands);
             OutputBox.Clear(); // Don't forget to clear the previous text if there
             OutputBox.Text = "Output: \r\n" + Program.OutputString;
         }
@@ -56,8 +57,7 @@ namespace ProgrammingLearningApp
         {
             var lines = EditorWindow.Text.Split('\n');
             textFileReader = new TextFileRead(lines);
-            Program = new MSO_LAB_3.Program(player: _player,
-                                            programLines: lines);
+            
         }
 
         private void openProgramToolStripMenuItem_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace MSO_LAB_3
 {
     public class App
     {
-        static public Player player = new(Vector2.Zero);
+        static public Player player = new();
         static public Program program = new();
         static void Main(string[] args)
         {
