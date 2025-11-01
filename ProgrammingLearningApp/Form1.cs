@@ -8,19 +8,21 @@ namespace ProgrammingLearningApp
     {
 
         public string FilePath;
-        public Player Player;
+        private Player _player;
         public MSO_LAB_3.Program Program;
 
-        public Form1()
+        public Form1(Player player)
         {
             InitializeComponent();
-            Player = new Player();
+            _player = player;
+            _player.OnPlayerChanged += (p) => GridPanel.Invalidate();
+            DoubleBuffered = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             UpdateProgram();
-            Program.Execute(Player);
+            Program.Execute(_player);
             OutputBox.Clear(); // Don't forget to clear the previous text if there
             OutputBox.Text = "Output: " + Program.OutputString;
         }
@@ -50,7 +52,7 @@ namespace ProgrammingLearningApp
         private void UpdateProgram()
         {
             var lines = EditorWindow.Text.Split('\n');
-            Program = new MSO_LAB_3.Program(player: Player,
+            Program = new MSO_LAB_3.Program(player: _player,
                                             programLines: lines);
         }
 
@@ -62,7 +64,7 @@ namespace ProgrammingLearningApp
                 string contents = File.ReadAllText(openFileDialog.FileName);
                 EditorWindow.Text = contents;
                 string path = openFileDialog.FileName; // get the full path to the .txt file in your machine
-                Program = new MSO_LAB_3.Program(player: Player,
+                Program = new MSO_LAB_3.Program(player: _player,
                                                 programName: path);
             }
             else { MessageBox.Show("Invalid file format (Must be a .txt file)"); }
@@ -95,7 +97,7 @@ namespace ProgrammingLearningApp
         {
             string path = this.PathHelper(name);
             EditorWindow.Text = File.ReadAllText(@path);
-            Program = new MSO_LAB_3.Program(player: Player,
+            Program = new MSO_LAB_3.Program(player: _player,
                                             programName: path);
         }
 
@@ -110,28 +112,31 @@ namespace ProgrammingLearningApp
         private const int GridHeight = 10;
         private const int CellSize = 50;
 
-
-        private void GridPanel_Paint(object? sender, PaintEventArgs e)
+        
+        public void GridPanel_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            int GridWidth = 10;
+            int GridHeight = 10;
+            int CellSize = 50;
 
-            using (var pen = new Pen(Color.Black, 1))
+            using (var pen = new Pen(Color.Black))
             {
-                // verticale lijnen
                 for (int x = 0; x <= GridWidth; x++)
-                {
-                    float xPos = x * CellSize;
-                    g.DrawLine(pen, xPos, 0, xPos, GridHeight * CellSize);
-                }
-
-                // horizontale lijnen
+                    g.DrawLine(pen, x * CellSize, 0, x * CellSize, GridHeight * CellSize);
                 for (int y = 0; y <= GridHeight; y++)
-                {
-                    float yPos = y * CellSize;
-                    g.DrawLine(pen, 0, yPos, GridWidth * CellSize, yPos);
-                }
+                    g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
+            }
+
+            // speler tekenen (als die bestaat)
+            if (_player != null)
+            {
+                var pos = _player.position;
+                float px = pos.X * CellSize;
+                float py = pos.Y * CellSize;
+                g.FillEllipse(Brushes.Red, px, py, CellSize, CellSize);
             }
         }
+       
     }
 }

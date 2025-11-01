@@ -1,3 +1,5 @@
+using System.Numerics;
+
 namespace ProgrammingLearningApp
 {
     internal static class Program
@@ -11,7 +13,8 @@ namespace ProgrammingLearningApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            var player = new MSO_LAB_3.Player(new Vector2(0, 0));
+            Application.Run(new Form1(player));
         }
     }
 }
