@@ -7,8 +7,6 @@ namespace MSO_LAB_3
 {
     public class Program
     {
-        public TextFileRead _textFileRead;
-        public List<ICommand> _commands;
         public int _noOfCmdsP;
         public int _maxNestP;
         public int _noOfRepeatP;
@@ -16,29 +14,25 @@ namespace MSO_LAB_3
         // == New stuff == 
         public string OutputString; // used for the textbox in the forms app 
 
-        // constructor based off of list of commands 
-        public Program(Player player, string programName) // keep program logic seperate from main io interaction with user
+        public Program()
         {
-            _textFileRead = new(p: player, programName: programName);
-            _commands = _textFileRead.ProgramCommands; // throw the read commands into the list here
+            //
         }
 
-        public Program(Player player, string[] programLines)
+        public void Execute(Player player, List<ICommand> commands)
         {
-            _textFileRead = new(p: player, programLines);
-            _commands = _textFileRead.ProgramCommands;
-        }
-
-        public void Execute(Player p)
-        {
-            p.Reset(); // reset position and direction before executing commands 
-            foreach (ICommand command in _commands)
+            player.Reset(); // reset position and direction before executing commands 
+            foreach (ICommand command in commands)
             {
-                command.Execute();  
+                command.Execute(player);  
                 OutputString += command.Log(); 
+                if (command is InvalidCmd)
+                {
+                    break; // stop the program when encountering an invalid command
+                           // should make for more easily spotting spelling errors (I think)
+                }
             }
-            OutputString += $"End state ({p.position.X},{p.position.Y}) facing {p.direction}";
-            // Console.WriteLine(OutputString); // temp
-        }
+            OutputString += $"End state ({player.position.X},{player.position.Y}) facing {player.direction}";
+        }   
     }
 }

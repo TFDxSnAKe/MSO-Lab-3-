@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace MSO_LAB_3
     public class App
     {
         static public Player player = new();
+        static public Program program = new();
         static void Main(string[] args)
         {
             RunApp();
@@ -26,8 +28,7 @@ namespace MSO_LAB_3
                     ChooseExample();
                     break;
                 case "2":
-                    ChooseMode(new Program(player: player,
-                                           programName: GetPath("Program")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Program")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -44,17 +45,13 @@ namespace MSO_LAB_3
             switch (input)
             {
                 case "1":
-                    ChooseMode(new Program(player: player,
-                                           programName: GetPath("Basic")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Basic")));
                     break;
                 case "2":
-
-                    ChooseMode(new Program(player: player,
-                                           programName: GetPath("Advanced")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Advanced")));
                     break;
                 case "3":
-                    ChooseMode(new Program(player: player,
-                                           programName: GetPath("Expert")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Expert")));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -62,7 +59,7 @@ namespace MSO_LAB_3
             }
         }
 
-        static void ChooseMode(Program program)
+        static void ChooseMode(TextFileRead textFileRead)
         {
             Console.WriteLine("[1] Execute selected program\n" +
                               "[2] Calculate metrics");
@@ -70,10 +67,10 @@ namespace MSO_LAB_3
             switch (input)
             {
                 case "1":
-                    ExecuteProgram(program);
+                    ExecuteProgram(textFileRead.ProgramCommands);
                     break;
                 case "2":
-                    MetricsProgram(program);
+                    MetricsProgram(textFileRead);
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -81,16 +78,24 @@ namespace MSO_LAB_3
             }
         }
 
-        static void ExecuteProgram(Program program)
+        static void ExecuteProgram(List<ICommand> commands)
         {
-            program.Execute(player);
+            program.Execute(player, commands);
         }
 
-        static void MetricsProgram(Program program)
+        static void MetricsProgram(TextFileRead textFileRead)
         {
-            var cmds = program._commands;
+            var cmds = textFileRead.ProgramCommands;
             var metric = new Metrics(cmds);
-            metric.DisplayMetrics();
+            DisplayMetrics(metric);
+        }
+
+        public static string DisplayMetrics(Metrics metrics)
+        {
+            return $"No. of valid commands:   {metrics._noOfCmds} \r\n" +
+                   $"No. of invalid commands: {metrics.NoOfInvalidCmds} \r\n" +
+                   $"Maximum nesting:         {metrics._maxNest} \r\n" +
+                   $"No. of repeats:          {metrics._noOfRepeats}";
         }
 
         // .txt file path finding helper
@@ -98,6 +103,5 @@ namespace MSO_LAB_3
         {
             return Path.Combine(AppContext.BaseDirectory, $"..\\..\\..\\{name}.txt");
         }
-
     }
 }

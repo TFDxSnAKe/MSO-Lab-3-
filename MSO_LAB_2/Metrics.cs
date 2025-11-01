@@ -20,14 +20,6 @@ namespace MSO_LAB_3
         {
             CalcMetrics(commands);
         }
-        public string DisplayMetrics()
-        {
-            return MetricsString = $"No. of valid commands:   {_noOfCmds} \r\n" +
-                                   $"No. of invalid commands: {NoOfInvalidCmds} \r\n" + 
-                                   $"Maximum nesting:         {_maxNest} \r\n" +
-                                   $"No. of repeats:          {_noOfRepeats}";
-        }
-
 
         private void CalcMetrics(List<ICommand> cmds, int nest = 0)
         {

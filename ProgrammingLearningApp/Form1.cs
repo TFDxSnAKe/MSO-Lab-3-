@@ -9,19 +9,23 @@ namespace ProgrammingLearningApp
         public string FilePath;
         public Player Player;
         public MSO_LAB_3.Program Program;
+        public TextFileRead textFileReader;
 
         public Form1()
         {
             InitializeComponent();
             Player = new Player();
+            Program = new MSO_LAB_3.Program();
         }
 
+        // This method is responsible for executing a program
         private void button1_Click(object sender, EventArgs e)
         {
             UpdateProgram();
-            Program.Execute(Player);
+            Program.OutputString = "";
+            Program.Execute(Player, textFileReader.ProgramCommands);
             OutputBox.Clear(); // Don't forget to clear the previous text if there
-            OutputBox.Text = "Output: " + Program.OutputString;
+            OutputBox.Text = "Output: \r\n" + Program.OutputString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -42,15 +46,14 @@ namespace ProgrammingLearningApp
         private void MetricsButton_Click(object sender, EventArgs e)
         {
             UpdateProgram();
-            var metrics = new Metrics(commands: Program._commands);
-            OutputBox.Text = metrics.DisplayMetrics();
+            var metrics = new Metrics(commands: textFileReader.ProgramCommands);
+            OutputBox.Text = App.DisplayMetrics(metrics);
         }
 
         private void UpdateProgram()
         {
             var lines = EditorWindow.Text.Split('\n');
-            Program = new MSO_LAB_3.Program(player: Player,
-                                            programLines: lines);
+            textFileReader = new TextFileRead(lines);
         }
 
         private void openProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,8 +64,6 @@ namespace ProgrammingLearningApp
                 string contents = File.ReadAllText(openFileDialog.FileName);
                 EditorWindow.Text = contents;
                 string path = openFileDialog.FileName; // get the full path to the .txt file in your machine
-                Program = new MSO_LAB_3.Program(player: Player,
-                                                programName: path);
             }
             else { MessageBox.Show("Invalid file format (Must be a .txt file)"); }
         }
@@ -94,8 +95,7 @@ namespace ProgrammingLearningApp
         {
             string path = this.PathHelper(name);
             EditorWindow.Text = File.ReadAllText(@path);
-            Program = new MSO_LAB_3.Program(player: Player,
-                                            programName: path);
+            UpdateProgram();
         }
 
 
@@ -104,7 +104,5 @@ namespace ProgrammingLearningApp
         {
             return App.GetPath(name);
         }
-
-
     }
 }

@@ -16,14 +16,14 @@ namespace MSO_LAB_3
             ErrorMessage = errorMessage;
         }
 
-        public void Execute()
+        public void Execute(Player dummy)
         {
             Log();
         }
 
         public string Log()
         {
-            return $"Invalid command!: {ErrorMessage}, "; 
+            return $"Invalid command!: {ErrorMessage} "; 
         }
     }
 }
