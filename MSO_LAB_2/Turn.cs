@@ -8,22 +8,20 @@ namespace MSO_LAB_3
 {
     public class Turn : ICommand
     {
-        public string _dir; // left or right
-        Player _player;
-        public Turn(Player p, string dir) 
+        public string TurnDirection; // left or right
+        public Turn(string turnDirection) 
         {
-            this._dir = dir;
-            _player = p;
+            this.TurnDirection = turnDirection;
         }
-        public void Execute()
+        public void Execute(Player player)
         {
-            if (_dir == "left")
+            if (TurnDirection == "left")
             {
-                TurnLeft(_player);
+                TurnLeft(player);
             }
-            else if (_dir == "right")
+            else if (TurnDirection == "right")
             {
-                TurnRight(_player);
+                TurnRight(player);
             }
         }
 
@@ -39,13 +37,7 @@ namespace MSO_LAB_3
 
         public string Log()
         {
-            if (_dir == "left" || _dir == "right")
-            {
-                return $"Turn({_dir}), ";
-            }
-            // error handling
-            var dummy = new InvalidCmd("Incorrect syntax after 'Turn'");
-            return dummy.Log();        
+            return $"- Turn({TurnDirection}) \r\n";    
         }
     }
 }

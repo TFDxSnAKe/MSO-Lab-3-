@@ -8,7 +8,7 @@ namespace MSO_LAB_3
 {
     public interface ICommand // lets make it an interface after all 
     {
-        void Execute();
+        void Execute(Player player);
         string Log(); // made this an inheritable func
     }
 }

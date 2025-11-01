@@ -17,14 +17,14 @@ namespace MSO_LAB_3
             this._counter = counter;
         }
 
-        public void Execute()
+        public void Execute(Player player)
         {
             logString = string.Empty;
             for (int x = 0; x < _counter; x++)          //toegevoegd zat de command chain ook gerepeat wordt zovaak als dat moet
             {
                 foreach (var command in _commands)
                 {
-                    command.Execute();
+                    command.Execute(player);
                     logString += command.Log();
                 }
             }

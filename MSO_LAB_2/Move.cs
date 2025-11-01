@@ -10,27 +10,25 @@ namespace MSO_LAB_3
     public class Move : ICommand
     {
         public int _steps;
-        Player _player;
-        public Move(Player p, int count)
+        public Move(int count)
         {
             this._steps = count;
-            _player = p;
         }
-        public void Execute()
+        public void Execute(Player player)
         {
-            switch (_player.direction)
+            switch (player.direction)
             {
                 case Direction.North:
-                    _player.position += new Vector2(0, _steps); // (x,y+counter)
+                    player.position -= new Vector2(0, _steps); // (x,y-counter)
                     break;
                 case Direction.East:
-                    _player.position += new Vector2(_steps, 0); // (x+counter,y)
+                    player.position += new Vector2(_steps, 0); // (x+counter,y)
                     break;
                 case Direction.South:
-                    _player.position -= new Vector2(0, _steps); // (x,y-counter)
+                    player.position += new Vector2(0, _steps); // (x,y+counter)
                     break;
                 case Direction.West:
-                    _player.position -= new Vector2(_steps, 0); // (x-counter,y)
+                    player.position -= new Vector2(_steps, 0); // (x-counter,y)
                     break;
                 default:
                     break;
@@ -39,7 +37,7 @@ namespace MSO_LAB_3
 
         public string Log()
         {
-            return $"Move({_steps}), ";
+            return $"- Move({_steps}) \r\n";
         }
     }
 }

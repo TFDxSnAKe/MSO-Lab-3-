@@ -40,7 +40,7 @@ namespace TestProject
             Assert.IsType<Move>(repeat._commands[1]);
             var nestedTurn = (Turn)repeat._commands[0];
             var nestedMove = (Move)repeat._commands[1];
-            Assert.Equal("right", nestedTurn._dir);
+            Assert.Equal("right", nestedTurn.TurnDirection);
 
             File.Delete(tempFile);
 

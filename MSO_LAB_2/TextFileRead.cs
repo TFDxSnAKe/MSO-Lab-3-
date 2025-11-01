@@ -11,11 +11,9 @@ namespace MSO_LAB_3
     {
         // store the read commands in here
         public List<ICommand> ProgramCommands = new List<ICommand>();
-        Player _player;
         
-        public TextFileRead(Player p, string programName)
-        {
-            _player = p; 
+        public TextFileRead(string programName)
+        { 
             var ind = 0;
             var allLines = File.ReadAllLines(programName).ToList();
             ProgramCommands = ReadCommands(cmds: allLines,
@@ -23,14 +21,13 @@ namespace MSO_LAB_3
                                            indentCount: 0);
         }
 
-        public TextFileRead(Player p, string[] programLines)
+        public TextFileRead(string[] programLines)
         {
-            _player = p;
             var ind = 0;
             var allLines = programLines.ToList();
             ProgramCommands = ReadCommands(cmds: allLines,
-                               index: ref ind,
-                               indentCount: 0);
+                                           index: ref ind,
+                                           indentCount: 0);
         }
 
         private List<ICommand> ReadCommands(List<string> cmds, ref int index, int indentCount)
@@ -60,8 +57,18 @@ namespace MSO_LAB_3
                 if (currLine.StartsWith("Turn"))
                 {
                     var temp = currLine.Split(' ');
-                    var turnCmd = new Turn(_player, dir: temp[1]);
-                    commands.Add(turnCmd);
+                    // checking if temp[] consists of [Turn, correct word]
+                    if (temp.Length == 2 && (temp[1] == "left" || temp[1] == "right"))
+                    {
+                        var turnCmd = new Turn(turnDirection: temp[1]);
+                        commands.Add(turnCmd);
+                    }
+                    else
+                    {
+                        ErrorHandler(commands,
+                                     errorMessage: "Incorrect syntax after 'Turn'");
+                    }
+
                     index++;
                 }
                 else if (currLine.StartsWith("Move"))
@@ -70,14 +77,13 @@ namespace MSO_LAB_3
                     // important to check if temp[] consists of ["Move", something else]
                     if (temp.Length == 2 && IsParsable(temp[1]))
                     {
-                        var MoveCmd = new Move(_player, count: int.Parse(temp[1]));
+                        var MoveCmd = new Move(count: int.Parse(temp[1]));
                         commands.Add(MoveCmd);
                     }
                     else
                     {
-                        // error handling
-                        var Dummy = new InvalidCmd("Incorrect syntax after 'Move'");
-                        commands.Add(Dummy);
+                        ErrorHandler(commands,
+                                     errorMessage: "Incorrect syntax after 'Move'");
                     }
                     index++;
                 }
@@ -95,9 +101,8 @@ namespace MSO_LAB_3
                     }
                     else
                     {
-                        // error handling
-                        var dummy = new InvalidCmd("Incorrect syntax after 'Repeat' (No valid number or 'times' at end)");
-                        commands.Add(dummy);
+                        ErrorHandler(commands,
+                                     errorMessage: "Incorrect syntax after 'Repeat' (No valid number or 'times' at end)");
                         index++;
                     }
                 }
@@ -106,7 +111,12 @@ namespace MSO_LAB_3
             return commands;
         }
 
-        
+        private static void ErrorHandler(List<ICommand> commands, string errorMessage)
+        {
+            var Dummy = new InvalidCmd(errorMessage + "\r\n");
+            commands.Add(Dummy);
+        }
+
         private int CountIndent(string s)
         {
             int i = 0;
