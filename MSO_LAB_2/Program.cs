@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MSO_LAB_3.Exeptions;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Numerics;
@@ -22,16 +23,31 @@ namespace MSO_LAB_3
         public void Execute(Player player, List<ICommand> commands)
         {
             player.Reset(); // reset position and direction before executing commands 
-            foreach (ICommand command in commands)
+            try
             {
-                command.Execute(player);  
-                OutputString += command.Log(); 
-                if (command is InvalidCmd)
+                foreach (var command in commands)
                 {
-                    break; // stop the program when encountering an invalid command
-                           // should make for more easily spotting spelling errors (I think)
+                    command.Execute(player);
+                    OutputString += command.Log();
+                    if (command is InvalidCmd)
+                    {
+                        break; // stop the program when encountering an invalid command
+                               // should make for more easily spotting spelling errors (I think)
+                    }
                 }
             }
+            catch (OutOfGridException ex)
+            {
+                OutputString += "Error: " + ex.Message + "\r\n";
+            }
+            catch (Exception ex)
+            {
+                // fallback voor onverwachte fouten
+                OutputString += "Unexpected error: " + ex.Message + "\r\n";
+            }
+
+   
+
             OutputString += $"End state ({player.position.X},{player.position.Y}) facing {player.direction}";
         }   
     }

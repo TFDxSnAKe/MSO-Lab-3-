@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MSO_LAB_3.Exeptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -20,7 +21,7 @@ namespace MSO_LAB_3
         {
             Vector2 newPos = player.position;
 
-            for(var i = 0; i < _steps; _steps--)
+            for(var i = 0; i < _steps; i++)
             {
                 switch (player.direction)
                 {
@@ -46,8 +47,9 @@ namespace MSO_LAB_3
                 }
                 else
                 {
-                    //gooi error in outputbox
-                    Console.WriteLine("NahUh je kan niet de grid uit gap"); //temp
+                    throw new OutOfGridException(
+                        $"Can't move outside the grid! Attempted position: {newPos}"
+                    );
                 }
             }
             
