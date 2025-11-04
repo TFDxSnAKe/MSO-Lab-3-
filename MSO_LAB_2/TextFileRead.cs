@@ -91,6 +91,42 @@ namespace MSO_LAB_3
                     }
                     index++;
                 }
+                else if (currLine.StartsWith("RepeatUntil"))
+                {
+                    var temp = currLine.Split(' ');
+                    if (temp.Length != 2)
+                    {
+                        HandleError(commands, "Incorrect syntax after 'RepeatUntil'");
+                        index++;
+                        continue;
+                    }
+
+                    string condition = temp[1];
+                    index++;
+
+                    List<ICommand> nested = ReadCommands(cmds, ref index, currIndent + 3);
+
+                    Func<Player, bool> stopCondition = condition switch
+                    {
+                        "WallAhead" => (p) =>
+                        {
+                            var ahead = p.GetNextPosition();
+                            return !_grid.IsWalkable(ahead);
+                        }
+                        ,
+
+                        "GridEdge" => (p) =>
+                        {
+                            var ahead = p.GetNextPosition();
+                            return !_grid.Contains(ahead);
+                        }
+                        ,
+
+                        _ => (p) => true // fail-safe
+                    };
+
+                    commands.Add(new RepeatUntil(nested, stopCondition));
+                }
                 else if (currLine.StartsWith("Repeat"))
                 {
                     var temp = currLine.Split(' ');
@@ -110,6 +146,7 @@ namespace MSO_LAB_3
                         index++;
                     }
                 }
+                
                 else { index++; }
             }
             return commands;

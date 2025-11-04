@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,5 +39,19 @@ namespace MSO_LAB_3
             path.clearPath();
             path.AddStep(position);
         }
+
+
+        public Vector2 GetNextPosition()
+        {
+            return direction switch
+            {
+                Direction.North => position + new Vector2(0, -1),
+                Direction.East => position + new Vector2(1, 0),
+                Direction.South => position + new Vector2(0, 1),
+                Direction.West => position + new Vector2(1, 1),
+                _ => position
+            };
+        }
+
     }
 }

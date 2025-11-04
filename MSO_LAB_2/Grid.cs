@@ -37,7 +37,8 @@ namespace MSO_LAB_3
 
         public bool IsWalkable(Vector2 position)
         {
-            if(!Contains(position)) return false;
+            if(!Contains(position)) return false; 
+            
 
             char cell = GetCell(position);
             return cell != '+';

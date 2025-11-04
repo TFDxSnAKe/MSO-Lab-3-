@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MSO_LAB_3.Exeptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,11 @@ namespace MSO_LAB_3.commands
         public void Execute(Player player)
         {
             logString = "";
-            while (!_stopCondition(player))
+
+            int maxLoop = 50;
+
+
+            while (!_stopCondition(player) && maxLoop-- > 0)
             {
                 foreach (var command in _commands)
                 {
@@ -30,9 +35,14 @@ namespace MSO_LAB_3.commands
                     logString += command.Log();
                     if (_stopCondition(player))
                     {
+                        
                         break;
                     }
                 }
+            }
+            if(maxLoop <= 0)
+            {
+                throw new InfiniteLoopException("You created an infinite loop, stopped after 50 itterations!");
             }
         }
 
