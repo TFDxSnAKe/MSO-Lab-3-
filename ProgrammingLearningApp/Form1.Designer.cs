@@ -41,6 +41,10 @@
             expertToolStripMenuItem = new ToolStripMenuItem();
             openProgramToolStripMenuItem = new ToolStripMenuItem();
             saveProgramToolStripMenuItem = new ToolStripMenuItem();
+            pathfindingExerciseStrip = new ToolStripDropDownButton();
+            easyToolStripMenuItem = new ToolStripMenuItem();
+            mediumToolStripMenuItem = new ToolStripMenuItem();
+            hardToolStripMenuItem = new ToolStripMenuItem();
             GridPanel = new Panel();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -91,7 +95,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(24, 24);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { programStripButton });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { programStripButton, pathfindingExerciseStrip });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Padding = new Padding(0, 0, 2, 0);
@@ -153,6 +157,38 @@
             saveProgramToolStripMenuItem.Text = "Save Program";
             saveProgramToolStripMenuItem.Click += saveProgramToolStripMenuItem_Click;
             // 
+            // pathfindingExerciseStrip
+            // 
+            pathfindingExerciseStrip.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            pathfindingExerciseStrip.DropDownItems.AddRange(new ToolStripItem[] { easyToolStripMenuItem, mediumToolStripMenuItem, hardToolStripMenuItem });
+            pathfindingExerciseStrip.Image = (Image)resources.GetObject("pathfindingExerciseStrip.Image");
+            pathfindingExerciseStrip.ImageTransparentColor = Color.Magenta;
+            pathfindingExerciseStrip.Name = "pathfindingExerciseStrip";
+            pathfindingExerciseStrip.Size = new Size(124, 22);
+            pathfindingExerciseStrip.Text = "Pathfiding Exercises";
+            pathfindingExerciseStrip.Click += pathfindingExerciseStrip_Click;
+            // 
+            // easyToolStripMenuItem
+            // 
+            easyToolStripMenuItem.Name = "easyToolStripMenuItem";
+            easyToolStripMenuItem.Size = new Size(180, 22);
+            easyToolStripMenuItem.Text = "Easy";
+            easyToolStripMenuItem.Click += easyToolStripMenuItem_Click;
+            // 
+            // mediumToolStripMenuItem
+            // 
+            mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
+            mediumToolStripMenuItem.Size = new Size(180, 22);
+            mediumToolStripMenuItem.Text = "Medium";
+            mediumToolStripMenuItem.Click += mediumToolStripMenuItem_Click;
+            // 
+            // hardToolStripMenuItem
+            // 
+            hardToolStripMenuItem.Name = "hardToolStripMenuItem";
+            hardToolStripMenuItem.Size = new Size(180, 22);
+            hardToolStripMenuItem.Text = "Hard";
+            hardToolStripMenuItem.Click += hardToolStripMenuItem_Click;
+            // 
             // GridPanel
             // 
             GridPanel.BackColor = SystemColors.InactiveBorder;
@@ -202,5 +238,9 @@
         private ToolStripMenuItem advancedToolStripMenuItem;
         private ToolStripMenuItem expertToolStripMenuItem;
         private Panel GridPanel;
+        private ToolStripDropDownButton pathfindingExerciseStrip;
+        private ToolStripMenuItem easyToolStripMenuItem;
+        private ToolStripMenuItem mediumToolStripMenuItem;
+        private ToolStripMenuItem hardToolStripMenuItem;
     }
 }

@@ -59,7 +59,7 @@ namespace ProgrammingLearningApp
         {
             var lines = EditorWindow.Text.Split('\n');
             textFileReader = new TextFileRead(lines, _grid);
-            
+
         }
 
         private void openProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -145,10 +145,36 @@ namespace ProgrammingLearningApp
                 float py = pos.Y * CellSize;
                 g.FillEllipse(Brushes.Red, px, py, CellSize, CellSize);
 
-                
             }
+        }
+        
+        // lil helper
+        private void LoadGridExercise(string challenge)
+        {
+            var reader = new GridFileRead();
+            var path = PathHelper(challenge);
+            _grid = reader.LoadGridFile(path);
+        }
+
+        private void easyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGridExercise(challenge: "EasyChallenge");
+        }
 
 
+        private void mediumToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGridExercise(challenge: "MediumChallenge");
+        }
+
+        private void hardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGridExercise(challenge: "HardChallenge");
+        }
+
+        private void pathfindingExerciseStrip_Click(object sender, EventArgs e)
+        {
+            //
         }
     }
 }
