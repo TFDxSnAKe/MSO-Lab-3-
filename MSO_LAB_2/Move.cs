@@ -12,6 +12,8 @@ namespace MSO_LAB_3
     {
         private int _steps;
         private Grid _grid;
+        private bool _goalReached;
+        private int _actualSteps;
         public Move(Grid grid, int count)
         {
             this._steps = count;
@@ -54,12 +56,25 @@ namespace MSO_LAB_3
 
                 player.position = newPos;
 
+                if (_grid.IsGoal(newPos))
+                {
+                    _goalReached = true;
+                    _actualSteps = i + 1;
+                    break;
+                }
+
             }
             
         }
 
         public string Log()
         {
+            if (_goalReached)
+            {
+                return $"Goal reached after taking {_actualSteps} steps forward," +
+                        " well done \r\n"; // should probably be more festive than this
+                                           // but idc atm
+            }
             return $"- Move({_steps}) \r\n";
         }
     }

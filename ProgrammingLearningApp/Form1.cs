@@ -142,14 +142,6 @@ namespace ProgrammingLearningApp
                 }
             }
 
-            using (var pen = new Pen(Color.Black))
-            {
-                for (int x = 0; x <= GridWidth; x++)
-                    g.DrawLine(pen, x * CellSize, 0, x * CellSize, GridHeight * CellSize);
-                for (int y = 0; y <= GridHeight; y++)
-                    g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
-            }
-
             // speler tekenen (als die bestaat)
             if (_player != null)
             {
@@ -164,6 +156,15 @@ namespace ProgrammingLearningApp
                 float py = pos.Y * CellSize;
                 g.FillEllipse(Brushes.Red, px, py, CellSize, CellSize);
 
+            }
+
+            // last of the drawing calls so its ontop of the cells
+            using (var pen = new Pen(Color.Black))
+            {
+                for (int x = 0; x <= GridWidth; x++)
+                    g.DrawLine(pen, x * CellSize, 0, x * CellSize, GridHeight * CellSize);
+                for (int y = 0; y <= GridHeight; y++)
+                    g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
             }
         }
         
