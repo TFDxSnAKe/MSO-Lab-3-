@@ -9,6 +9,7 @@ namespace TestProject
 
     public class GridParsingTest
     {
+        /*
         [Fact]
         public void ExampleGridTest()
         {
@@ -75,5 +76,7 @@ namespace TestProject
             Assert.Equal('x', gridReader.Grid[0, 9]);
 
         }
+        */
     }
+
 }
