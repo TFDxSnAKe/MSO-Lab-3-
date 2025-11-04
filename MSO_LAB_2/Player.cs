@@ -23,7 +23,7 @@ namespace MSO_LAB_3
                 OnPlayerChanged?.Invoke(this);
             }
         }
-        public Direction direction = Direction.North;
+        public Direction direction = Direction.East;
         public PathTrace path { get; } = new();
         public Player()
         {
@@ -34,7 +34,7 @@ namespace MSO_LAB_3
         public void Reset()
         {
             this.position = Vector2.Zero;
-            this.direction = Direction.North;
+            this.direction = Direction.East;
             path.clearPath();
             path.AddStep(position);
         }

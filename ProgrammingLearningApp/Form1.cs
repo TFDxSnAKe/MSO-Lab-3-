@@ -122,6 +122,18 @@ namespace ProgrammingLearningApp
             int GridWidth = 6;
             int GridHeight = 6;
             int CellSize = 50;
+            //teken de mureeennnn
+            for (int x = 0; x < _grid.Width; x++)
+            {
+                for (int y = 0; y < _grid.Height; y++)
+                {
+                    char cell = _grid.Cells[x, y];
+                    if (cell == '+')
+                    {
+                        g.FillRectangle(Brushes.PaleVioletRed, x * CellSize, y * CellSize, CellSize, CellSize);
+                    }
+                }
+            }
 
             using (var pen = new Pen(Color.Black))
             {
@@ -147,7 +159,7 @@ namespace ProgrammingLearningApp
 
                 
             }
-
+            
 
         }
     }

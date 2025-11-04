@@ -17,6 +17,7 @@ namespace ProgrammingLearningApp
             player.Reset();
             char[,] cells = new char[6, 6];
             var grid = new MSO_LAB_3.Grid(cells);
+            
 
             Application.Run(new Form1(player, grid));
         }
