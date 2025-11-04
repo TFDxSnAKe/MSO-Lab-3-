@@ -11,6 +11,7 @@ namespace MSO_LAB_3
 {
     public class App
     {
+        static public Grid grid;
         static public Player player = new();
         static public Program program = new();
         static void Main(string[] args)
@@ -20,6 +21,11 @@ namespace MSO_LAB_3
 
         static void RunApp()
         {
+            //init grid empty
+            char[,] cells = new char[10, 10];
+            grid = new Grid(cells);
+
+
             Console.WriteLine("[1] Example Programs \n" +
                               "[2] Use Imported Program (.txt)");
             var input = Console.ReadLine();
@@ -29,7 +35,7 @@ namespace MSO_LAB_3
                     ChooseExample();
                     break;
                 case "2":
-                    ChooseMode(new TextFileRead(programName: GetPath("Program")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Program"), grid));
                     break;
                 default:
                     Console.WriteLine("Invalid input");
@@ -46,13 +52,13 @@ namespace MSO_LAB_3
             switch (input)
             {
                 case "1":
-                    ChooseMode(new TextFileRead(programName: GetPath("Basic")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Basic"), grid));
                     break;
                 case "2":
-                    ChooseMode(new TextFileRead(programName: GetPath("Advanced")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Advanced"), grid));
                     break;
                 case "3":
-                    ChooseMode(new TextFileRead(programName: GetPath("Expert")));
+                    ChooseMode(new TextFileRead(programName: GetPath("Expert"), grid));
                     break;
                 default:
                     Console.WriteLine("Invalid input");

@@ -49,12 +49,12 @@
             // 
             OutputBox.BackColor = SystemColors.Window;
             OutputBox.Font = new Font("Cascadia Code", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            OutputBox.Location = new Point(752, 465);
+            OutputBox.Location = new Point(740, 435);
             OutputBox.Multiline = true;
             OutputBox.Name = "OutputBox";
             OutputBox.ReadOnly = true;
             OutputBox.ScrollBars = ScrollBars.Both;
-            OutputBox.Size = new Size(304, 193);
+            OutputBox.Size = new Size(301, 223);
             OutputBox.TabIndex = 0;
             OutputBox.TextChanged += OutputBox_TextChanged;
             // 
@@ -70,10 +70,10 @@
             // 
             // EditorWindow
             // 
-            EditorWindow.Font = new Font("Cascadia Code", 15.75F);
+            EditorWindow.Font = new Font("Cascadia Code", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             EditorWindow.Location = new Point(154, 28);
             EditorWindow.Name = "EditorWindow";
-            EditorWindow.Size = new Size(546, 632);
+            EditorWindow.Size = new Size(504, 630);
             EditorWindow.TabIndex = 2;
             EditorWindow.Text = "";
             EditorWindow.TextChanged += EditorWindow_TextChanged_1;
@@ -156,12 +156,12 @@
             // GridPanel
             // 
             GridPanel.BackColor = SystemColors.GradientActiveCaption;
-            GridPanel.Location = new Point(710, 55);
+            GridPanel.Location = new Point(740, 30);
             GridPanel.Margin = new Padding(2);
-            GridPanel.MaximumSize = new Size(351, 301);
-            GridPanel.MinimumSize = new Size(351, 301);
+            GridPanel.MaximumSize = new Size(301, 301);
+            GridPanel.MinimumSize = new Size(301, 301);
             GridPanel.Name = "GridPanel";
-            GridPanel.Size = new Size(351, 301);
+            GridPanel.Size = new Size(301, 301);
             GridPanel.TabIndex = 7;
             GridPanel.Paint += GridPanel_Paint;
             // 

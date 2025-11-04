@@ -1,24 +1,26 @@
 using MSO_LAB_3;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 
 namespace ProgrammingLearningApp
 {
     public partial class Form1 : Form
     {
-
+        private Grid _grid;
         public string FilePath;
         private Player _player;
         public MSO_LAB_3.Program Program;
         public TextFileRead textFileReader;
 
-        public Form1(Player player)
+        public Form1(Player player, Grid grid)
         {
             InitializeComponent();
             Program = new MSO_LAB_3.Program();
             _player = player;
             _player.OnPlayerChanged += (p) => GridPanel.Invalidate();
             DoubleBuffered = true;
+            _grid = grid;
         }
 
         // This method is responsible for executing a program
@@ -56,7 +58,7 @@ namespace ProgrammingLearningApp
         private void UpdateProgram()
         {
             var lines = EditorWindow.Text.Split('\n');
-            textFileReader = new TextFileRead(lines);
+            textFileReader = new TextFileRead(lines, _grid);
             
         }
 
@@ -117,8 +119,8 @@ namespace ProgrammingLearningApp
         public void GridPanel_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
-            int GridWidth = 10;
-            int GridHeight = 10;
+            int GridWidth = 6;
+            int GridHeight = 6;
             int CellSize = 50;
 
             using (var pen = new Pen(Color.Black))

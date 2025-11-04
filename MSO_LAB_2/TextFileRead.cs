@@ -11,9 +11,11 @@ namespace MSO_LAB_3
     {
         // store the read commands in here
         public List<ICommand> ProgramCommands = new List<ICommand>();
-        
-        public TextFileRead(string programName)
+
+        private Grid _grid;
+        public TextFileRead(string programName, Grid grid)
         { 
+            _grid = grid;
             var ind = 0;
             var allLines = File.ReadAllLines(programName).ToList();
             ProgramCommands = ReadCommands(cmds: allLines,
@@ -21,8 +23,9 @@ namespace MSO_LAB_3
                                            indentCount: 0);
         }
 
-        public TextFileRead(string[] programLines)
+        public TextFileRead(string[] programLines, Grid grid)
         {
+            _grid = grid;
             var ind = 0;
             var allLines = programLines.ToList();
             ProgramCommands = ReadCommands(cmds: allLines,
@@ -77,7 +80,7 @@ namespace MSO_LAB_3
                     // important to check if temp[] consists of ["Move", something else]
                     if (temp.Length == 2 && IsParsable(temp[1]))
                     {
-                        var MoveCmd = new Move(count: int.Parse(temp[1]));
+                        var MoveCmd = new Move(_grid, count: int.Parse(temp[1]));
                         commands.Add(MoveCmd);
                     }
                     else
