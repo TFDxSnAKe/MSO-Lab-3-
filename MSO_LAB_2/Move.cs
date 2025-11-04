@@ -19,35 +19,38 @@ namespace MSO_LAB_3
         public void Execute(Player player)
         {
             Vector2 newPos = player.position;
+
+            for(var i = 0; i < _steps; _steps--)
+            {
+                switch (player.direction)
+                {
+                    case Direction.North:
+                        newPos -= new Vector2(0, 1); // (x,y-counter)
+                        break;
+                    case Direction.East:
+                        newPos += new Vector2(1, 0); // (x+counter,y)
+                        break;
+                    case Direction.South:
+                        newPos += new Vector2(0, 1); // (x,y+counter)
+                        break;
+                    case Direction.West:
+                        newPos -= new Vector2(1 , 0); // (x-counter,y)
+                        break;
+                    default:
+                        break;
+                }
+
+                if (_grid.Contains(newPos))
+                {
+                    player.position = newPos;
+                }
+                else
+                {
+                    //gooi error in outputbox
+                    Console.WriteLine("NahUh je kan niet de grid uit gap"); //temp
+                }
+            }
             
-
-            switch (player.direction)
-            {
-                case Direction.North:
-                    newPos -= new Vector2(0, _steps); // (x,y-counter)
-                    break;
-                case Direction.East:
-                    newPos += new Vector2(_steps, 0); // (x+counter,y)
-                    break;
-                case Direction.South:
-                    newPos += new Vector2(0, _steps); // (x,y+counter)
-                    break;
-                case Direction.West:
-                    newPos -= new Vector2(_steps, 0); // (x-counter,y)
-                    break;
-                default:
-                    break;
-            }
-
-            if (_grid.Contains(newPos))
-            {
-                player.position = newPos;
-            }
-            else
-            {
-                //gooi error in outputbox
-                Console.WriteLine("NahUh je kan niet de grid uit gap"); //temp
-            }
         }
 
         public string Log()

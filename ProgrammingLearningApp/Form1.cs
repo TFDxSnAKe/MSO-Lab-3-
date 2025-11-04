@@ -134,11 +134,11 @@ namespace ProgrammingLearningApp
             // speler tekenen (als die bestaat)
             if (_player != null)
             {
-                foreach (var position in _player.Path.Cells)
+                foreach (var position in _player.path.Cells)
                 {
                     float x = position.X * CellSize;
                     float y = position.Y * CellSize;
-                    g.FillRectangle(Brushes.LightBlue, x, y, CellSize, CellSize);
+                    g.FillRectangle(Brushes.LightGray, x, y, CellSize, CellSize);
                 }
                 var pos = _player.position;
                 float px = pos.X * CellSize;

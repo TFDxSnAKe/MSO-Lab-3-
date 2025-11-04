@@ -19,22 +19,24 @@ namespace MSO_LAB_3
             set
             {
                 _position = value;
-                Path.AddStep(value);
+                path.AddStep(value);
                 OnPlayerChanged?.Invoke(this);
             }
         }
         public Direction direction = Direction.North;
-        public PathTrace Path { get; } = new();
+        public PathTrace path { get; } = new();
         public Player()
         {
-           position = Vector2.Zero;
+            position = Vector2.Zero;
+            
         }
 
         public void Reset()
         {
             this.position = Vector2.Zero;
             this.direction = Direction.North;
-            Path.clearPath();
+            path.clearPath();
+            path.AddStep(position);
         }
     }
 }
