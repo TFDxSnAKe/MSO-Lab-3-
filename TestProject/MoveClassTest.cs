@@ -1,5 +1,6 @@
 ﻿using MSO_LAB_3;
 using MSO_LAB_3.commands;
+using MSO_LAB_3.Exeptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace TestProject
 
             move.Execute(player);
 
-            Assert.Equal(new Vector2(3, 2), player.position);
+            Assert.Equal(new Vector2(4, 3), player.position);
         }
 
         [Fact]
@@ -33,9 +34,7 @@ namespace TestProject
             Player player = new Player { position = new Vector2(3, 3) };
             Move move = new Move(grid, 6);
 
-            move.Execute(player);
-
-            Assert.Equal(new Vector2(3, 0), player.position);
+            Assert.Throws<OutOfGridException>(() => move.Execute(player));
         }
 
     }
