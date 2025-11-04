@@ -41,16 +41,19 @@ namespace MSO_LAB_3
                         break;
                 }
 
-                if (_grid.Contains(newPos))
+
+                if (!_grid.Contains(newPos))
                 {
-                    player.position = newPos;
+                    throw new OutOfGridException($"You cannot move outside grid: {newPos}");
                 }
-                else
+
+                if (!_grid.IsWalkable(newPos))
                 {
-                    throw new OutOfGridException(
-                        $"Can't move outside the grid! Attempted position: {newPos}"
-                    );
+                    throw new WallException($"You walked into the wall: {newPos}");
                 }
+
+                player.position = newPos;
+
             }
             
         }

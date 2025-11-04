@@ -34,5 +34,14 @@ namespace MSO_LAB_3
         {
             Cells[(int)position.X, (int)position.Y] = value;
         }
+
+        public bool IsWalkable(Vector2 position)
+        {
+            if(!Contains(position)) return false;
+
+            char cell = GetCell(position);
+            return cell != '+';
+        }
+
     }
 }
