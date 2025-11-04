@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSO_LAB_3
+namespace MSO_LAB_3.commands
 {
     public class Turn : ICommand
     {
         public string TurnDirection; // left or right
         public Turn(string turnDirection) 
         {
-            this.TurnDirection = turnDirection;
+            TurnDirection = turnDirection;
         }
         public void Execute(Player player)
         {

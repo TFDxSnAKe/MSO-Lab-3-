@@ -6,7 +6,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSO_LAB_3
+namespace MSO_LAB_3.commands
 {
     public class Move : ICommand
     {
@@ -14,8 +14,8 @@ namespace MSO_LAB_3
         private Grid _grid;
         public Move(Grid grid, int count)
         {
-            this._steps = count;
-            this._grid = grid;
+            _steps = count;
+            _grid = grid;
         }
         public void Execute(Player player)
         {

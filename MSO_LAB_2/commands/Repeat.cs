@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSO_LAB_3
+namespace MSO_LAB_3.commands
 {
     public class Repeat : ICommand
     {
@@ -13,8 +13,8 @@ namespace MSO_LAB_3
         private string logString;
         public Repeat(List<ICommand> commands, int counter)
         {
-            this._commands = commands;
-            this._counter = counter;
+            _commands = commands;
+            _counter = counter;
         }
 
         public void Execute(Player player)
