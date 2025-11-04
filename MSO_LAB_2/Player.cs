@@ -32,7 +32,7 @@ namespace MSO_LAB_3
         public void Reset()
         {
             this.position = Vector2.Zero;
-            this.direction = Direction.East;
+            this.direction = Direction.North;
         }
     }
 }

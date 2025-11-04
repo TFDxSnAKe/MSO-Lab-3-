@@ -9,29 +9,43 @@ namespace MSO_LAB_3
 {
     public class Move : ICommand
     {
-        public int _steps;
-        public Move(int count)
+        private int _steps;
+        private Grid _grid;
+        public Move(Grid grid, int count)
         {
             this._steps = count;
+            this._grid = grid;
         }
         public void Execute(Player player)
         {
+            Vector2 newPos = player.position;
+
             switch (player.direction)
             {
                 case Direction.North:
-                    player.position -= new Vector2(0, _steps); // (x,y-counter)
+                    newPos -= new Vector2(0, _steps); // (x,y-counter)
                     break;
                 case Direction.East:
-                    player.position += new Vector2(_steps, 0); // (x+counter,y)
+                    newPos += new Vector2(_steps, 0); // (x+counter,y)
                     break;
                 case Direction.South:
-                    player.position += new Vector2(0, _steps); // (x,y+counter)
+                    newPos += new Vector2(0, _steps); // (x,y+counter)
                     break;
                 case Direction.West:
-                    player.position -= new Vector2(_steps, 0); // (x-counter,y)
+                    newPos -= new Vector2(_steps, 0); // (x-counter,y)
                     break;
                 default:
                     break;
+            }
+
+            if (_grid.Contains(newPos))
+            {
+                player.position = newPos;
+            }
+            else
+            {
+                //gooi error in outputbox
+                Console.WriteLine("NahUh je kan niet de grid uit gap"); //temp
             }
         }
 
