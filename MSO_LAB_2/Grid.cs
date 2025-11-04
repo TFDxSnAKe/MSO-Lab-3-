@@ -43,5 +43,9 @@ namespace MSO_LAB_3
             return cell != '+';
         }
 
+        public bool IsGoal(Vector2 position)
+        {
+            return GetCell(position) == 'x';
+        }
     }
 }
