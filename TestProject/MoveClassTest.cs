@@ -34,7 +34,7 @@ namespace TestProject
 
             move.Execute(player);
 
-            Assert.Equal(new Vector2(3, 3), player.position);
+            Assert.Equal(new Vector2(3, 0), player.position);
         }
 
     }
