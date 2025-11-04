@@ -52,7 +52,7 @@ namespace TestProject
                     "o+oo+o",
                     "o+o+oo",
                     "o+o++o",
-                    "oooo+o",
+                    "+ooo+o",
                     "ooooox"
                 });
 
@@ -60,7 +60,7 @@ namespace TestProject
                 (
                     new char[,]
                     {
-                        {'o','o','o','o','o','o' }, // col 1
+                        {'o','o','o','o','+','o' }, // col 1
                         {'o','+','+','+','o','o' }, // col 2
                         {'o','o','o','o','o','o' }, // etc.. 
                         {'+','o','+','+','o','o' },

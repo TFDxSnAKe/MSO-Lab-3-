@@ -128,10 +128,17 @@ namespace ProgrammingLearningApp
                 for (int y = 0; y < _grid.Height; y++)
                 {
                     char cell = _grid.Cells[x, y];
+                    var brush = Brushes.White;
                     if (cell == '+')
                     {
-                        g.FillRectangle(Brushes.PaleVioletRed, x * CellSize, y * CellSize, CellSize, CellSize);
+                        // g.FillRectangle(Brushes.PaleVioletRed, x * CellSize, y * CellSize, CellSize, CellSize);
+                        brush = Brushes.PaleVioletRed;
                     }
+                    else if (cell == 'x')
+                    {
+                        brush = Brushes.CadetBlue;
+                    }
+                    g.FillRectangle(brush, x * CellSize, y * CellSize, CellSize, CellSize);
                 }
             }
 
@@ -166,6 +173,7 @@ namespace ProgrammingLearningApp
             var reader = new GridFileRead();
             var path = PathHelper(challenge);
             _grid = reader.LoadGridFile(path);
+            GridPanel.Invalidate(); // forces the grid to redraw
         }
 
         private void easyToolStripMenuItem_Click(object sender, EventArgs e)
