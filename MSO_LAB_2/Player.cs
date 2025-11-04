@@ -48,7 +48,7 @@ namespace MSO_LAB_3
                 Direction.North => position + new Vector2(0, -1),
                 Direction.East => position + new Vector2(1, 0),
                 Direction.South => position + new Vector2(0, 1),
-                Direction.West => position + new Vector2(1, 1),
+                Direction.West => position + new Vector2(-1, 0),
                 _ => position
             };
         }
