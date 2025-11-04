@@ -19,6 +19,7 @@ namespace MSO_LAB_3
         public void Execute(Player player)
         {
             Vector2 newPos = player.position;
+            
 
             switch (player.direction)
             {

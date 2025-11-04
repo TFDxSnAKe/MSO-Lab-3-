@@ -115,7 +115,7 @@ namespace ProgrammingLearningApp
         private const int GridHeight = 10;
         private const int CellSize = 50;
 
-        
+
         public void GridPanel_Paint(object sender, PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -134,12 +134,21 @@ namespace ProgrammingLearningApp
             // speler tekenen (als die bestaat)
             if (_player != null)
             {
+                foreach (var position in _player.Path.Cells)
+                {
+                    float x = position.X * CellSize;
+                    float y = position.Y * CellSize;
+                    g.FillRectangle(Brushes.LightBlue, x, y, CellSize, CellSize);
+                }
                 var pos = _player.position;
                 float px = pos.X * CellSize;
                 float py = pos.Y * CellSize;
                 g.FillEllipse(Brushes.Red, px, py, CellSize, CellSize);
+
+                
             }
+
+
         }
-       
     }
 }

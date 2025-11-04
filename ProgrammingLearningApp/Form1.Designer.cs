@@ -155,7 +155,7 @@
             // 
             // GridPanel
             // 
-            GridPanel.BackColor = SystemColors.GradientActiveCaption;
+            GridPanel.BackColor = SystemColors.InactiveBorder;
             GridPanel.Location = new Point(740, 30);
             GridPanel.Margin = new Padding(2);
             GridPanel.MaximumSize = new Size(301, 301);
