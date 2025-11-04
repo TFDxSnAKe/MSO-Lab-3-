@@ -12,10 +12,13 @@ namespace MSO_LAB_3
         public int _noOfCmds;
         public int _maxNest;
         public int _noOfRepeats;
+        
+        public int _noOfCustomExceptions;
 
         // == new
         public string MetricsString;
         public int NoOfInvalidCmds;
+        public int _noOfRepeatUntil;
 
         public Metrics(List<ICommand> commands)
         {
@@ -26,7 +29,17 @@ namespace MSO_LAB_3
         {
             foreach (var cmd in cmds)
             {
-                if (cmd is Repeat r)
+                if (cmd is RepeatUntil ru)
+                {
+                    _noOfRepeatUntil++;
+                    if (_maxNest < nest + 1)
+                    {
+                        _maxNest = nest + 1;
+                    }
+                    
+                    CalcMetrics(ru._commands, nest + 1);
+                }
+                else if (cmd is Repeat r)
                 {
                     _noOfRepeats++;
                     if (_maxNest < nest + 1)
@@ -35,8 +48,9 @@ namespace MSO_LAB_3
                     }
                     // recursively call on the repeat object and keep counting there
                     CalcMetrics(r._commands, nest + 1);
-                }                
-                else if (cmd is not InvalidCmd) 
+                }
+                
+                else if (cmd is not InvalidCmd)
                 {
                     _noOfCmds++;
                 }

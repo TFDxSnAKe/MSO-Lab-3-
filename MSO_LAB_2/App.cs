@@ -103,7 +103,8 @@ namespace MSO_LAB_3
             return $"No. of valid commands:   {metrics._noOfCmds} \r\n" +
                    $"No. of invalid commands: {metrics.NoOfInvalidCmds} \r\n" +
                    $"Maximum nesting:         {metrics._maxNest} \r\n" +
-                   $"No. of repeats:          {metrics._noOfRepeats}";
+                   $"No. of repeats:          {metrics._noOfRepeats} \r\n" +
+                   $"No. of ReppeatUntil:     {metrics._noOfRepeatUntil}";
         }
 
         // .txt file path finding helper
