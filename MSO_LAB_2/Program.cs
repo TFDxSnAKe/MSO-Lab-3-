@@ -39,6 +39,7 @@ namespace MSO_LAB_3
             catch (OutOfGridException ex)
             {
                 OutputString += "Error: " + ex.Message + "\r\n";
+                
             }
             catch (Exception ex)
             {
