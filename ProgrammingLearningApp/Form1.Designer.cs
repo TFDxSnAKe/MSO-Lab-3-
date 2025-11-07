@@ -46,6 +46,8 @@
             mediumToolStripMenuItem = new ToolStripMenuItem();
             hardToolStripMenuItem = new ToolStripMenuItem();
             GridPanel = new Panel();
+            clearGridButton = new Button();
+            ResetPlayerButton = new Button();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,7 +62,6 @@
             OutputBox.ScrollBars = ScrollBars.Both;
             OutputBox.Size = new Size(301, 223);
             OutputBox.TabIndex = 0;
-            OutputBox.TextChanged += OutputBox_TextChanged;
             // 
             // ExecuteProgramButton
             // 
@@ -80,7 +81,6 @@
             EditorWindow.Size = new Size(504, 630);
             EditorWindow.TabIndex = 2;
             EditorWindow.Text = "";
-            EditorWindow.TextChanged += EditorWindow_TextChanged_1;
             // 
             // MetricsButton
             // 
@@ -166,26 +166,25 @@
             pathfindingExerciseStrip.Name = "pathfindingExerciseStrip";
             pathfindingExerciseStrip.Size = new Size(124, 22);
             pathfindingExerciseStrip.Text = "Pathfiding Exercises";
-            pathfindingExerciseStrip.Click += pathfindingExerciseStrip_Click;
             // 
             // easyToolStripMenuItem
             // 
             easyToolStripMenuItem.Name = "easyToolStripMenuItem";
-            easyToolStripMenuItem.Size = new Size(180, 22);
+            easyToolStripMenuItem.Size = new Size(119, 22);
             easyToolStripMenuItem.Text = "Easy";
             easyToolStripMenuItem.Click += easyToolStripMenuItem_Click;
             // 
             // mediumToolStripMenuItem
             // 
             mediumToolStripMenuItem.Name = "mediumToolStripMenuItem";
-            mediumToolStripMenuItem.Size = new Size(180, 22);
+            mediumToolStripMenuItem.Size = new Size(119, 22);
             mediumToolStripMenuItem.Text = "Medium";
             mediumToolStripMenuItem.Click += mediumToolStripMenuItem_Click;
             // 
             // hardToolStripMenuItem
             // 
             hardToolStripMenuItem.Name = "hardToolStripMenuItem";
-            hardToolStripMenuItem.Size = new Size(180, 22);
+            hardToolStripMenuItem.Size = new Size(119, 22);
             hardToolStripMenuItem.Text = "Hard";
             hardToolStripMenuItem.Click += hardToolStripMenuItem_Click;
             // 
@@ -201,12 +200,33 @@
             GridPanel.TabIndex = 7;
             GridPanel.Paint += GridPanel_Paint;
             // 
+            // clearGridButton
+            // 
+            clearGridButton.Location = new Point(740, 336);
+            clearGridButton.Name = "clearGridButton";
+            clearGridButton.Size = new Size(149, 38);
+            clearGridButton.TabIndex = 0;
+            clearGridButton.Text = "Clear Grid";
+            clearGridButton.Click += clearGridButton_Click;
+            // 
+            // ResetPlayerButton
+            // 
+            ResetPlayerButton.Location = new Point(895, 336);
+            ResetPlayerButton.Name = "ResetPlayerButton";
+            ResetPlayerButton.Size = new Size(146, 38);
+            ResetPlayerButton.TabIndex = 8;
+            ResetPlayerButton.Text = "Reset Player";
+            ResetPlayerButton.UseVisualStyleBackColor = true;
+            ResetPlayerButton.Click += ResetPlayerButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1068, 670);
+            Controls.Add(ResetPlayerButton);
+            Controls.Add(clearGridButton);
             Controls.Add(GridPanel);
             Controls.Add(toolStrip1);
             Controls.Add(MetricsButton);
@@ -216,7 +236,6 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Form1";
             Text = "Form1";
-            Load += Form1_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ResumeLayout(false);
@@ -242,5 +261,7 @@
         private ToolStripMenuItem easyToolStripMenuItem;
         private ToolStripMenuItem mediumToolStripMenuItem;
         private ToolStripMenuItem hardToolStripMenuItem;
+        private Button clearGridButton;
+        private Button ResetPlayerButton;
     }
 }
