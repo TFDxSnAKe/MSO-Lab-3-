@@ -18,7 +18,7 @@ namespace ProgrammingLearningApp
             _player = player;
             _player.OnPlayerChanged += (p) => GridPanel.Invalidate();
             DoubleBuffered = true;
-            _playerSprite = Image.FromFile(Path.Combine(AppContext.BaseDirectory, "spr_player_idle_v2.png"));
+            _playerSprite = Image.FromFile(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\spr_player_idle_v2.png"));
             _grid = grid;
         }
 
