@@ -10,7 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="spr_player_idle_v2.png" />
+    <None Remove="Sprites\spr_player_idle_v2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="spr_player_idle_v2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -18,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="spr_player_idle_v2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Folder Include="Sprites\" />
   </ItemGroup>
 
 </Project>
