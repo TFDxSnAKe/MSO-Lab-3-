@@ -235,7 +235,7 @@
             Controls.Add(OutputBox);
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Form1";
-            Text = "Form1";
+            Text = "Code Rampage";
             Load += Form1_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
