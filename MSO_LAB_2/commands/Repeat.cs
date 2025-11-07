@@ -4,7 +4,7 @@
     {
         public List<ICommand> _commands;
         public int _counter;
-        private string logString;
+        private string logString = "";
         public Repeat(List<ICommand> commands, int counter)
         {
             _commands = commands;

@@ -12,7 +12,7 @@ namespace TestProject
     public class FormAppButtonTest
     {
 
-        Grid emptyGrid = new Grid
+        readonly Grid emptyGrid = new Grid
                 (
                     new char[,]
                     {
@@ -25,7 +25,7 @@ namespace TestProject
                     }
                 );
 
-        Grid filledGrid = new Grid
+        readonly Grid filledGrid = new Grid
                 (
                     new char[,]
                     {
@@ -38,10 +38,10 @@ namespace TestProject
                     }
                 );
 
-        private Form1 MakeFakeForm(Grid grid)
+        private static Form1 MakeFakeForm(Grid grid)
         {
             var player = new Player();
-            var form = new Form1(player, grid);
+            var form = new Form1(player, grid, loadSprite: false);
             return form;
         }
 
@@ -56,7 +56,7 @@ namespace TestProject
             // acting
             fakeForm.GetType().GetMethod("MetricsButton_Click",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.Invoke(fakeForm, new object[] { null, EventArgs.Empty });
+                ?.Invoke(fakeForm, [null!, EventArgs.Empty]);
 
             // asserting
             Assert.Contains("No. of valid commands", fakeForm.OutputBox.Text);
@@ -74,7 +74,7 @@ namespace TestProject
             // acting
             fakeForm.GetType().GetMethod("button1_Click",  // still couldn't be bothered with actually renaming this button
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.Invoke(fakeForm, new object[] { null, EventArgs.Empty });
+                ?.Invoke(fakeForm, [null!, EventArgs.Empty]);
 
             // asserting
             Assert.Contains("Output:", fakeForm.OutputBox.Text);
@@ -89,7 +89,7 @@ namespace TestProject
             // acting
             fakeForm.GetType().GetMethod("clearGridButton_Click",  // still couldn't be bothered with actually renaming this button
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.Invoke(fakeForm, new object[] { null, EventArgs.Empty });
+                ?.Invoke(fakeForm, [null!, EventArgs.Empty]);
 
             // asserting
             Assert.Equal(fakeForm._grid.Cells, emptyGrid.Cells);
@@ -104,10 +104,10 @@ namespace TestProject
             // acting
             fakeForm.GetType().GetMethod("ResetPlayerButton_Click",  // still couldn't be bothered with actually renaming this button
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.Invoke(fakeForm, new object[] { null, EventArgs.Empty });
+                ?.Invoke(fakeForm, [null!, EventArgs.Empty]);
 
             // asserting
-            Assert.Equal(Vector2.Zero, fakeForm._player.position);
+            Assert.Equal(Vector2.Zero, fakeForm._player.Position);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace TestProject
 {
     public class FormFileIOTest
     {
-        private Form1 MakeFakeForm()
+        private static Form1 MakeFakeForm()
         {
             var player = new Player();
             var grid = new Grid
@@ -25,7 +25,7 @@ namespace TestProject
                         {'o','o','o','o','o','o' }
                     }
                 );
-            var form = new Form1(player, grid);
+            var form = new Form1(player, grid, loadSprite: false);
             return form;
         }
 
@@ -34,12 +34,11 @@ namespace TestProject
         {
             // arraging
             var fakeForm = MakeFakeForm();
-            var tempFile = Path.Combine(Environment.CurrentDirectory, "TestProgram.txt");
 
             // acting
             typeof(Form1).GetMethod("LoadExampleIntoBox",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                ?.Invoke(fakeForm, new object[] { "TestProgram" });
+                ?.Invoke(fakeForm, ["TestProgram"]);
 
             // asserting
             Assert.Contains("Move", fakeForm.EditorWindow.Text);

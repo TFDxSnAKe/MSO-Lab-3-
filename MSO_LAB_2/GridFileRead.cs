@@ -2,7 +2,7 @@
 {
     public class GridFileRead
     {
-        public Grid LoadGridFile(string filePath)
+        public static Grid LoadGridFile(string filePath)
         {
             var lines = File.ReadAllLines(filePath);
 

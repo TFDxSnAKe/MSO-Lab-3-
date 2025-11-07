@@ -13,12 +13,12 @@ namespace TestProject
         {
             char[,] cells = new char[6, 6];
             Grid grid = new Grid(cells);
-            Player player = new Player { position = new Vector2(3, 3) };
+            Player player = new Player { Position = new Vector2(3, 3) };
             Move move = new Move(grid, 1);
 
             move.Execute(player);
 
-            Assert.Equal(new Vector2(4, 3), player.position);
+            Assert.Equal(new Vector2(4, 3), player.Position);
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace TestProject
         {
             char[,] cells = new char[6, 6];
             Grid grid = new Grid(cells);
-            Player player = new Player { position = new Vector2(3, 3) };
+            Player player = new Player { Position = new Vector2(3, 3) };
             Move move = new Move(grid, 6);
 
             Assert.Throws<OutOfGridException>(() => move.Execute(player));

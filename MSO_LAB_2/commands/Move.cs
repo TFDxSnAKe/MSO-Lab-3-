@@ -5,8 +5,8 @@ namespace MSO_LAB_3.commands
 {
     public class Move : ICommand
     {
-        private int _steps;
-        private Grid _grid;
+        private readonly int _steps;
+        private readonly Grid _grid;
         public bool _goalReached;
         private int _actualSteps;
         public Move(Grid grid, int count)
@@ -16,7 +16,7 @@ namespace MSO_LAB_3.commands
         }
         public void Execute(Player player)
         {
-            Vector2 newPos = player.position;
+            Vector2 newPos = player.Position;
 
             for (var i = 0; i < _steps; i++)
             {
@@ -49,7 +49,7 @@ namespace MSO_LAB_3.commands
                     throw new WallException($"You walked into the wall: {newPos}");
                 }
 
-                player.position = newPos;
+                player.Position = newPos;
 
                 if (_grid.IsGoal(newPos))
                 {

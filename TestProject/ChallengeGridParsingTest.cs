@@ -8,15 +8,15 @@ namespace TestProject
         public void easyGridParsing_test()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "oooooo",
                     "o++++o",
                     "o++++o",
                     "o++++o",
                     "o++++o",
                     "ooooox"
-                });
+                ]);
 
             var grid = new Grid
                 (
@@ -31,8 +31,7 @@ namespace TestProject
                     }
                 );
 
-            var reader = new GridFileRead();
-            var parsedGrid = reader.LoadGridFile(tempFile);
+            var parsedGrid = GridFileRead.LoadGridFile(tempFile);
 
             Assert.Equal(grid.Cells, parsedGrid.Cells);
         }
@@ -41,15 +40,15 @@ namespace TestProject
         public void mediumGridParsing_test()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "ooo+oo",
                     "o+oo+o",
                     "o+o+oo",
                     "o+o++o",
                     "+ooo+o",
                     "ooooox"
-                });
+                ]);
 
             var grid = new Grid
                 (
@@ -64,8 +63,7 @@ namespace TestProject
                     }
                 );
 
-            var reader = new GridFileRead();
-            var parsedGrid = reader.LoadGridFile(tempFile);
+            var parsedGrid = GridFileRead.LoadGridFile(tempFile);
 
             Assert.Equal(grid.Cells, parsedGrid.Cells);
         }
@@ -74,15 +72,15 @@ namespace TestProject
         public void hardGridParsing_test()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "ooo+o+",
                     "+o++o+",
                     "+oooo+",
                     "++oo++",
                     "o++o++",
                     "o+xo+o"
-                });
+                ]);
 
             var grid = new Grid
                 (
@@ -97,8 +95,7 @@ namespace TestProject
                     }
                 );
 
-            var reader = new GridFileRead();
-            var parsedGrid = reader.LoadGridFile(tempFile);
+            var parsedGrid = GridFileRead.LoadGridFile(tempFile);
 
             Assert.Equal(grid.Cells, parsedGrid.Cells);
         }

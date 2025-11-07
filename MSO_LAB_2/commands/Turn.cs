@@ -19,12 +19,12 @@
             }
         }
 
-        public void TurnLeft(Player p)
+        public static void TurnLeft(Player p)
         {
             p.direction = (Direction)(((int)p.direction + 3) % 4);
         }
 
-        public void TurnRight(Player p)
+        public static void TurnRight(Player p)
         {
             p.direction = (Direction)(((int)p.direction + 1) % 4);
         }

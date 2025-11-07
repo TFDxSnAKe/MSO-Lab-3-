@@ -7,7 +7,7 @@ namespace MSO_LAB_3
         // store the read commands in here
         public List<ICommand> ProgramCommands = new List<ICommand>();
 
-        private Grid _grid;
+        private readonly Grid _grid;
         public TextFileRead(string programName, Grid grid)
         {
             _grid = grid;
@@ -155,7 +155,7 @@ namespace MSO_LAB_3
             commands.Add(Dummy);
         }
 
-        private int CountIndent(string s)
+        private static int CountIndent(string s)
         {
             int i = 0;
             foreach (char c in s)
@@ -169,9 +169,9 @@ namespace MSO_LAB_3
             return i;
         }
 
-        private bool IsParsable(string s)
+        private static bool IsParsable(string s)
         {
-            return int.TryParse(s, out var p);
+            return int.TryParse(s, out _);
         }
     }
 }

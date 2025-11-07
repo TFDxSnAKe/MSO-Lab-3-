@@ -6,7 +6,7 @@ namespace MSO_LAB_3
     public class Program
     {
         // == New stuff == 
-        public string OutputString; // used for the textbox in the forms app 
+        public string OutputString = ""; // used for the textbox in the forms app 
 
         public Program()
         {
@@ -24,10 +24,9 @@ namespace MSO_LAB_3
                     OutputString += command.Log();
                     if (command is InvalidCmd) break; // stop the program when encountering an invalid command
                                                       // should make for more easily spotting spelling errors (I think)
-                    else if (command is Move)
+                    else if (command is Move tempMove)
                     {
                         // kinda ugly solution but whatever
-                        var tempMove = command as Move;
                         if (tempMove._goalReached) break; // we've reached the goal, stop the program
                     }
                 }
@@ -42,7 +41,7 @@ namespace MSO_LAB_3
                 // fallback voor onverwachte fouten
                 OutputString += "Unexpected error: " + ex.Message + "\r\n";
             }
-            OutputString += $"End state ({player.position.X},{player.position.Y}) facing {player.direction}";
+            OutputString += $"End state ({player.Position.X},{player.Position.Y}) facing {player.direction}";
         }
     }
 }

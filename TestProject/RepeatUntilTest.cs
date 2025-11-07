@@ -30,7 +30,7 @@ namespace TestProject
             repeat.Execute(player);
 
 
-            Assert.Equal(new Vector2(4, 0), player.position);
+            Assert.Equal(new Vector2(4, 0), player.Position);
         }
 
 

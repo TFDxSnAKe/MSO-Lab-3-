@@ -4,7 +4,7 @@ namespace TestProject
 {
     public class IncorrectSyntaxTest
     {
-        Grid tempGrid = new Grid
+        readonly Grid tempGrid = new Grid
                 (
                     new char[,]
                     {
@@ -22,13 +22,13 @@ namespace TestProject
         public void incorrectMove_Test()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "Move forward",
                     "Repeat 2 times",
                     "   Turn right",
                     "   Move 3"
-                });
+                ]);
             Player tempPlayer = new Player();
             var reader = new TextFileRead(tempFile, tempGrid);
             var cmdList = reader.ProgramCommands;
@@ -41,11 +41,11 @@ namespace TestProject
         public void incorrectTurn_Test()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "Move 2",
                     "Turn idk"
-                });
+                ]);
             Player tempPlayer = new Player();
             var reader = new TextFileRead(tempFile, tempGrid);
             var cmdList = reader.ProgramCommands;
@@ -59,13 +59,13 @@ namespace TestProject
         {
 
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "Move 3",
                     "Repeat glorp",
                     "   Turn right",
                     "   Move 3"
-                });
+                ]);
             Player tempPlayer = new Player();
             var reader = new TextFileRead(tempFile, tempGrid);
             var cmdList = reader.ProgramCommands;
@@ -78,13 +78,13 @@ namespace TestProject
         public void incorrectRepeatUntil_Test()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "Move 3",
                     "RepeatUntil glorpus 2",
                     "   Turn right",
                     "   Move 3"
-                });
+                ]);
             Player tempPlayer = new Player();
             var reader = new TextFileRead(tempFile, tempGrid);
             var cmdList = reader.ProgramCommands;

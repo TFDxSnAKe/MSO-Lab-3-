@@ -14,12 +14,12 @@ namespace TestProject
             Player player = new Player { direction = Direction.East };
             Move move = new Move(grid, 1);
 
-            int before = player.path.Cells.Count;
+            int before = player.Path.Cells.Count;
 
             move.Execute(player);
 
-            Assert.Equal(before + 1, player.path.Cells.Count);
-            Assert.Contains(new Vector2(1, 0), player.path.Cells);
+            Assert.Equal(before + 1, player.Path.Cells.Count);
+            Assert.Contains(new Vector2(1, 0), player.Path.Cells);
         }
 
 

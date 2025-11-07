@@ -8,14 +8,14 @@ namespace TestProject
         public void FileParsingTest()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[]
-                {
+            File.WriteAllLines(tempFile,
+                [
                     "Move 1",
                     "Repeat 2 times",
                     "   Turn right",
                     "   Move 3",
                     "Turn left"
-                });
+                ]);
             Player tempPlayer = new Player();
 
             //var reader = new TextFileRead(tempPlayer, tempFile);

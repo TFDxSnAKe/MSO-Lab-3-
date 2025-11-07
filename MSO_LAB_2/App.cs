@@ -4,21 +4,17 @@ namespace MSO_LAB_3
 {
     public class App
     {
-        static public Grid grid;
+        //init grid empty
+        static public Grid grid = new Grid(new char[10, 10]);
         static public Player player = new();
         static public Program program = new();
-        static void Main(string[] args)
+        static void Main()
         {
             RunApp();
         }
 
         static void RunApp()
         {
-            //init grid empty
-            char[,] cells = new char[10, 10];
-            grid = new Grid(cells);
-
-
             Console.WriteLine("[1] Example Programs \n" +
                               "[2] Use Imported Program (.txt)");
             var input = Console.ReadLine();

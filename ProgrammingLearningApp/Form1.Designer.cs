@@ -71,7 +71,7 @@
             ExecuteProgramButton.TabIndex = 1;
             ExecuteProgramButton.Text = "Execute Program";
             ExecuteProgramButton.UseVisualStyleBackColor = true;
-            ExecuteProgramButton.Click += button1_Click;
+            ExecuteProgramButton.Click += Button1_Click;
             // 
             // EditorWindow
             // 
@@ -125,14 +125,14 @@
             basicToolStripMenuItem.Name = "basicToolStripMenuItem";
             basicToolStripMenuItem.Size = new Size(127, 22);
             basicToolStripMenuItem.Text = "Basic";
-            basicToolStripMenuItem.Click += basicToolStripMenuItem_Click;
+            basicToolStripMenuItem.Click += BasicToolStripMenuItem_Click;
             // 
             // advancedToolStripMenuItem
             // 
             advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
             advancedToolStripMenuItem.Size = new Size(127, 22);
             advancedToolStripMenuItem.Text = "Advanced";
-            advancedToolStripMenuItem.Click += advancedToolStripMenuItem_Click;
+            advancedToolStripMenuItem.Click += AdvancedToolStripMenuItem_Click;
             // 
             // expertToolStripMenuItem
             // 

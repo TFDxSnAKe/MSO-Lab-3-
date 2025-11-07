@@ -6,42 +6,42 @@ namespace MSO_LAB_3
     {
         public event Action<Player>? OnPlayerChanged;
 
-        private Vector2 _position = Vector2.Zero; // changed to vec2 for easy addition 
-        public Vector2 position
+        private Vector2 position = Vector2.Zero; // changed to vec2 for easy addition 
+        public Vector2 Position
         {
-            get => _position;
+            get => position;
             set
             {
-                _position = value;
-                path.AddStep(value);
+                position = value;
+                Path.AddStep(value);
                 OnPlayerChanged?.Invoke(this);
             }
         }
         public Direction direction = Direction.East;
-        public PathTrace path { get; } = new();
+        public PathTrace Path { get; } = new();
         public Player()
         {
-            position = Vector2.Zero;
+            Position = Vector2.Zero;
 
         }
 
         public void Reset()
         {
-            this.position = Vector2.Zero;
+            this.Position = Vector2.Zero;
             this.direction = Direction.East;
-            path.ClearPath();
-            path.AddStep(position);
+            Path.ClearPath();
+            Path.AddStep(Position);
         }
 
         public Vector2 GetNextPosition()
         {
             return direction switch
             {
-                Direction.North => position + new Vector2(0, -1),
-                Direction.East => position + new Vector2(1, 0),
-                Direction.South => position + new Vector2(0, 1),
-                Direction.West => position + new Vector2(-1, 0),
-                _ => position
+                Direction.North => Position + new Vector2(0, -1),
+                Direction.East => Position + new Vector2(1, 0),
+                Direction.South => Position + new Vector2(0, 1),
+                Direction.West => Position + new Vector2(-1, 0),
+                _ => Position
             };
         }
 
