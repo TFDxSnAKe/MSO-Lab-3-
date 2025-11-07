@@ -12,7 +12,7 @@ namespace MSO_LAB_3.commands
     {
         private int _steps;
         private Grid _grid;
-        private bool _goalReached;
+        public bool _goalReached;
         private int _actualSteps;
         public Move(Grid grid, int count)
         {

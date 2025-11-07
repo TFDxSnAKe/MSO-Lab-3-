@@ -30,26 +30,26 @@ namespace MSO_LAB_3
                 {
                     command.Execute(player);
                     OutputString += command.Log();
-                    if (command is InvalidCmd)
+                    if (command is InvalidCmd) break; // stop the program when encountering an invalid command
+                                                      // should make for more easily spotting spelling errors (I think)
+                    else if (command is Move)
                     {
-                        break; // stop the program when encountering an invalid command
-                               // should make for more easily spotting spelling errors (I think)
+                        // kinda ugly solution but whatever
+                        var tempMove = command as Move;
+                        if (tempMove._goalReached) break; // we've reached the goal, stop the program
                     }
                 }
             }
             catch (OutOfGridException ex)
             {
                 OutputString += "Error: " + ex.Message + "\r\n";
-                
+
             }
             catch (Exception ex)
             {
                 // fallback voor onverwachte fouten
                 OutputString += "Unexpected error: " + ex.Message + "\r\n";
             }
-
-   
-
             OutputString += $"End state ({player.position.X},{player.position.Y}) facing {player.direction}";
         }   
     }
