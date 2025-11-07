@@ -1,5 +1,4 @@
 using MSO_LAB_3;
-using Xunit;
 
 namespace TestProject
 {
@@ -9,7 +8,7 @@ namespace TestProject
         public void FileParsingTest()
         {
             string tempFile = Path.GetTempFileName();
-            File.WriteAllLines(tempFile, new[] 
+            File.WriteAllLines(tempFile, new[]
                 {
                     "Move 1",
                     "Repeat 2 times",

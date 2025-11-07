@@ -1,9 +1,4 @@
 ﻿using MSO_LAB_3;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 
 namespace TestProject
@@ -40,7 +35,7 @@ namespace TestProject
         }
 
         [Fact]
-        public void SetCell_ChangesValueAtPositionCorectly() 
+        public void SetCell_ChangesValueAtPositionCorectly()
         {
             var grid = new Grid(new char[3, 3]);
             var pos = new Vector2(1, 1);

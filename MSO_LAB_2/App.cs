@@ -1,12 +1,4 @@
 ﻿using MSO_LAB_3.commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Numerics;
-using System.Reflection.PortableExecutable;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MSO_LAB_3
 {
@@ -41,7 +33,7 @@ namespace MSO_LAB_3
                 default:
                     Console.WriteLine("Invalid input");
                     break;
-            }     
+            }
         }
 
         static void ChooseExample()

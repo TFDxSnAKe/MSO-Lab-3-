@@ -1,10 +1,5 @@
 ﻿using MSO_LAB_3.Exeptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MSO_LAB_3.commands
 {
@@ -23,7 +18,7 @@ namespace MSO_LAB_3.commands
         {
             Vector2 newPos = player.position;
 
-            for(var i = 0; i < _steps; i++)
+            for (var i = 0; i < _steps; i++)
             {
                 switch (player.direction)
                 {
@@ -37,7 +32,7 @@ namespace MSO_LAB_3.commands
                         newPos += new Vector2(0, 1); // (x,y+counter)
                         break;
                     case Direction.West:
-                        newPos -= new Vector2(1 , 0); // (x-counter,y)
+                        newPos -= new Vector2(1, 0); // (x-counter,y)
                         break;
                     default:
                         break;
@@ -64,7 +59,7 @@ namespace MSO_LAB_3.commands
                 }
 
             }
-            
+
         }
 
         public string Log()

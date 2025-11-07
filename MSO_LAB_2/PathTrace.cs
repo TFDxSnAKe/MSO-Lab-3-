@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace MSO_LAB_3
 {
@@ -19,9 +14,9 @@ namespace MSO_LAB_3
             Cells.Add(pos);
         }
 
-        public void ClearPath() 
+        public void ClearPath()
         {
-            Cells.Clear(); 
+            Cells.Clear();
         }
 
     }

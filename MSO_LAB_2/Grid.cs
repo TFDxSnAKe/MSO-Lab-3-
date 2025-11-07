@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace MSO_LAB_3
 {
@@ -19,7 +14,7 @@ namespace MSO_LAB_3
         {
             Cells = cells;
         }
-        
+
         public bool Contains(Vector2 position)
         {
             return position.X >= 0 && position.X < Width && position.Y >= 0 && position.Y < Height;
@@ -37,8 +32,8 @@ namespace MSO_LAB_3
 
         public bool IsWalkable(Vector2 position)
         {
-            if(!Contains(position)) return false; 
-            
+            if (!Contains(position)) return false;
+
 
             char cell = GetCell(position);
             return cell != '+';

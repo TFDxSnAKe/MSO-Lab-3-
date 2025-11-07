@@ -1,11 +1,6 @@
 ﻿using MSO_LAB_3;
 using MSO_LAB_3.commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestProject
 {
@@ -31,10 +26,10 @@ namespace TestProject
                 p => !grid.Contains(p.GetNextPosition()) //Stop at grid
             );
 
-            
+
             repeat.Execute(player);
 
-            
+
             Assert.Equal(new Vector2(4, 0), player.position);
         }
 

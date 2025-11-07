@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 
 namespace MSO_LAB_3
 {
@@ -29,7 +22,7 @@ namespace MSO_LAB_3
         public Player()
         {
             position = Vector2.Zero;
-            
+
         }
 
         public void Reset()
@@ -39,7 +32,6 @@ namespace MSO_LAB_3
             path.ClearPath();
             path.AddStep(position);
         }
-
 
         public Vector2 GetNextPosition()
         {

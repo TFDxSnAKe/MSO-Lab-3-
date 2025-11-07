@@ -1,7 +1,5 @@
 using MSO_LAB_3;
 using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.CompilerServices;
 
 namespace ProgrammingLearningApp
 {
@@ -147,7 +145,7 @@ namespace ProgrammingLearningApp
                 for (int y = 0; y <= GridHeight; y++)
                     g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
             }
-        }        
+        }
         #endregion
 
         #region challenge_loading

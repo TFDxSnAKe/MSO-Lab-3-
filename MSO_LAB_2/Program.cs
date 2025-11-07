@@ -1,9 +1,5 @@
 ﻿using MSO_LAB_3.commands;
 using MSO_LAB_3.Exeptions;
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Numerics;
 
 namespace MSO_LAB_3
 {
@@ -47,6 +43,6 @@ namespace MSO_LAB_3
                 OutputString += "Unexpected error: " + ex.Message + "\r\n";
             }
             OutputString += $"End state ({player.position.X},{player.position.Y}) facing {player.direction}";
-        }   
+        }
     }
 }

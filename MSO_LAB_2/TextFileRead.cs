@@ -1,10 +1,4 @@
 ﻿using MSO_LAB_3.commands;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MSO_LAB_3
 {
@@ -15,7 +9,7 @@ namespace MSO_LAB_3
 
         private Grid _grid;
         public TextFileRead(string programName, Grid grid)
-        { 
+        {
             _grid = grid;
             var ind = 0;
             var allLines = File.ReadAllLines(programName).ToList();
@@ -42,7 +36,7 @@ namespace MSO_LAB_3
             {
 
                 var line = cmds[index];
-                    
+
                 if (string.IsNullOrWhiteSpace(line))
                 {
                     index++;
@@ -62,15 +56,15 @@ namespace MSO_LAB_3
                 {
                     var temp = currLine.Split(' ');
                     // checking if temp[] consists of [Turn, correct word]
-                    if (temp.Length == 2 && (temp[1] == "left" || temp[1] == "right"))
+                    if (temp.Length != 2 || !(temp[1] == "left" || temp[1] == "right"))
                     {
-                        var turnCmd = new Turn(turnDirection: temp[1]);
-                        commands.Add(turnCmd);
+                        HandleError(commands,
+                                     errorMessage: "Incorrect syntax after 'Turn'");    
                     }
                     else
                     {
-                        HandleError(commands,
-                                     errorMessage: "Incorrect syntax after 'Turn'");
+                        var turnCmd = new Turn(turnDirection: temp[1]);
+                        commands.Add(turnCmd);
                     }
 
                     index++;
@@ -79,59 +73,68 @@ namespace MSO_LAB_3
                 {
                     var temp = currLine.Split(' ');
                     // important to check if temp[] consists of ["Move", something else]
-                    if (temp.Length == 2 && IsParsable(temp[1]))
-                    {
-                        var MoveCmd = new Move(_grid, count: int.Parse(temp[1]));
-                        commands.Add(MoveCmd);
-                    }
-                    else
+                    if (temp.Length != 2 || !IsParsable(temp[1]))
                     {
                         HandleError(commands,
                                      errorMessage: "Incorrect syntax after 'Move'");
+                    }
+                    else
+                    {
+                        var MoveCmd = new Move(_grid, count: int.Parse(temp[1]));
+                        commands.Add(MoveCmd);
                     }
                     index++;
                 }
                 else if (currLine.StartsWith("RepeatUntil"))
                 {
                     var temp = currLine.Split(' ');
-                    if (temp.Length != 2)
+                    if (temp.Length != 2 || !(temp[1] == "GridEdge" || temp[1] == "WallAhead"))
                     {
-                        HandleError(commands, "Incorrect syntax after 'RepeatUntil'");
+                        HandleError(commands, "Incorrect syntax after 'RepeatUntil': " +
+                                              "No valid condition or syntax");
                         index++;
                         continue;
                     }
-
-                    string condition = temp[1];
-                    index++;
-
-                    List<ICommand> nested = ReadCommands(cmds, ref index, currIndent + 3);
-
-                    Func<Player, bool> stopCondition = condition switch
+                    else
                     {
-                        "WallAhead" => (p) =>
+                        string condition = temp[1];
+                        index++;
+
+                        List<ICommand> nested = ReadCommands(cmds, ref index, currIndent + 3);
+
+                        Func<Player, bool> stopCondition = condition switch
                         {
-                            var ahead = p.GetNextPosition();
-                            return !_grid.IsWalkable(ahead);
-                        }
-                        ,
+                            "WallAhead" => (p) =>
+                            {
+                                var ahead = p.GetNextPosition();
+                                return !_grid.IsWalkable(ahead);
+                            }
+                            ,
 
-                        "GridEdge" => (p) =>
-                        {
-                            var ahead = p.GetNextPosition();
-                            return !_grid.Contains(ahead);
-                        }
-                        ,
+                            "GridEdge" => (p) =>
+                            {
+                                var ahead = p.GetNextPosition();
+                                return !_grid.Contains(ahead);
+                            }
+                            ,
 
-                        _ => (p) => true // fail-safe
-                    };
+                            _ => (p) => true // fail-safe
+                        };
 
-                    commands.Add(new RepeatUntil(nested, stopCondition));
+                        commands.Add(new RepeatUntil(nested, stopCondition));
+                    }
                 }
                 else if (currLine.StartsWith("Repeat"))
                 {
                     var temp = currLine.Split(' ');
                     // checking if the curr line consists of ["Repeat", some int, "times"]
-                    if (temp.Length == 3 && IsParsable(temp[1]) && temp[2] == "times")
+                    if (temp.Length != 3 || !IsParsable(temp[1]) || temp[2] != "times")
+                    {
+                        HandleError(commands,
+                                     errorMessage: "Incorrect syntax after 'Repeat' (No valid number or 'times' at end)");
+                        index++;
+                    }
+                    else
                     {
                         index++;
                         List<ICommand> nestedList = ReadCommands(cmds, ref index, currIndent + 3);
@@ -139,14 +142,8 @@ namespace MSO_LAB_3
                                                    counter: int.Parse(temp[1]));
                         commands.Add(RepeatCmd);
                     }
-                    else
-                    {
-                        HandleError(commands,
-                                     errorMessage: "Incorrect syntax after 'Repeat' (No valid number or 'times' at end)");
-                        index++;
-                    }
                 }
-                
+
                 else { index++; }
             }
             return commands;

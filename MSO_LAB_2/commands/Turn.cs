@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MSO_LAB_3.commands
+﻿namespace MSO_LAB_3.commands
 {
     public class Turn : ICommand
     {
         public string TurnDirection; // left or right
-        public Turn(string turnDirection) 
+        public Turn(string turnDirection)
         {
             TurnDirection = turnDirection;
         }
@@ -37,7 +31,7 @@ namespace MSO_LAB_3.commands
 
         public string Log()
         {
-            return $"- Turn({TurnDirection}) \r\n";    
+            return $"- Turn({TurnDirection}) \r\n";
         }
     }
 }

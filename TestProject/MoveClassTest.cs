@@ -1,12 +1,7 @@
 ﻿using MSO_LAB_3;
 using MSO_LAB_3.commands;
 using MSO_LAB_3.Exeptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestProject
 {
@@ -16,9 +11,9 @@ namespace TestProject
         [Fact]
         public void MovePlayerToPostitionInsideGridCorrectly()
         {
-            char[, ] cells = new char[6, 6];
+            char[,] cells = new char[6, 6];
             Grid grid = new Grid(cells);
-            Player player = new Player {position = new Vector2(3,3)};
+            Player player = new Player { position = new Vector2(3, 3) };
             Move move = new Move(grid, 1);
 
             move.Execute(player);
