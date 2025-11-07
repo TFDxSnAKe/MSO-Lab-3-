@@ -10,7 +10,7 @@ namespace ProgrammingLearningApp
         public Player _player;
         public MSO_LAB_3.Program Program;
         public TextFileRead textFileReader;
-
+        private Image _playerSprite;
         public Form1(Player player, Grid grid)
         {
             InitializeComponent();
@@ -18,6 +18,7 @@ namespace ProgrammingLearningApp
             _player = player;
             _player.OnPlayerChanged += (p) => GridPanel.Invalidate();
             DoubleBuffered = true;
+            _playerSprite = Image.FromFile(Path.Combine(AppContext.BaseDirectory, "spr_player_idle_v2.png"));
             _grid = grid;
         }
 
@@ -133,7 +134,14 @@ namespace ProgrammingLearningApp
                 var pos = _player.position;
                 float px = pos.X * CellSize;
                 float py = pos.Y * CellSize;
-                g.FillEllipse(Brushes.Red, px, py, CellSize, CellSize);
+                float angle = _player.direction switch
+                {
+                    Direction.North => 0,
+                    Direction.East => 90,
+                    Direction.South => 180,
+                    Direction.West => 270,
+                };
+                DrawRotatedSprite(g, _playerSprite, angle, px, py);
 
             }
 
@@ -145,6 +153,15 @@ namespace ProgrammingLearningApp
                 for (int y = 0; y <= GridHeight; y++)
                     g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
             }
+        }
+
+        private void DrawRotatedSprite(Graphics g, Image img, float angle, float x, float y)
+        {
+            g.TranslateTransform(x + CellSize / 2, y + CellSize / 2);
+            g.RotateTransform(angle);
+            g.TranslateTransform(-CellSize / 2, -CellSize / 2);
+            g.DrawImage(img, 0, 0, CellSize, CellSize);
+            g.ResetTransform();
         }
         #endregion
 
