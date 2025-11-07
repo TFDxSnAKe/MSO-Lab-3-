@@ -9,10 +9,6 @@ namespace MSO_LAB_3
 {
     public class Program
     {
-        public int _noOfCmdsP;
-        public int _maxNestP;
-        public int _noOfRepeatP;
-
         // == New stuff == 
         public string OutputString; // used for the textbox in the forms app 
 

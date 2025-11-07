@@ -16,7 +16,6 @@ namespace MSO_LAB_3
         public int _noOfCustomExceptions;
 
         // == new
-        public string MetricsString;
         public int NoOfInvalidCmds;
         public int _noOfRepeatUntil;
 

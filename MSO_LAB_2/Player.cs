@@ -13,7 +13,7 @@ namespace MSO_LAB_3
     {
         public event Action<Player>? OnPlayerChanged;
 
-        public Vector2 _position = Vector2.Zero; // changed to vec2 for easy addition 
+        private Vector2 _position = Vector2.Zero; // changed to vec2 for easy addition 
         public Vector2 position
         {
             get => _position;
