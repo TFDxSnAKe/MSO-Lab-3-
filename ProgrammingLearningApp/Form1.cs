@@ -23,6 +23,7 @@ namespace ProgrammingLearningApp
             _grid = grid;
         }
 
+        #region programAndMetricsButtons
         // This method is responsible for executing a program
         private void button1_Click(object sender, EventArgs e)
         {
@@ -31,21 +32,6 @@ namespace ProgrammingLearningApp
             Program.Execute(_player, textFileReader.ProgramCommands);
             OutputBox.Clear(); // Don't forget to clear the previous text if there
             OutputBox.Text = "Output: \r\n" + Program.OutputString;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OutputBox_TextChanged(object sender, EventArgs e)
-        {
-            // 
-        }
-
-        private void EditorWindow_TextChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         private void MetricsButton_Click(object sender, EventArgs e)
@@ -59,9 +45,10 @@ namespace ProgrammingLearningApp
         {
             var lines = EditorWindow.Text.Split('\n');
             textFileReader = new TextFileRead(lines, _grid);
-
         }
+        #endregion
 
+        #region programLoadingAndSaving
         private void openProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -103,18 +90,12 @@ namespace ProgrammingLearningApp
             EditorWindow.Text = File.ReadAllText(@path);
             UpdateProgram();
         }
+        #endregion
 
-
-        // .txt file path finding helper
-        private string PathHelper(string name)
-        {
-            return App.GetPath(name);
-        }
-
+        #region gridDrawing
         private const int GridWidth = 10;
         private const int GridHeight = 10;
         private const int CellSize = 50;
-
 
         public void GridPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -166,8 +147,10 @@ namespace ProgrammingLearningApp
                 for (int y = 0; y <= GridHeight; y++)
                     g.DrawLine(pen, 0, y * CellSize, GridWidth * CellSize, y * CellSize);
             }
-        }
-        
+        }        
+        #endregion
+
+        #region challenge_loading
         // lil helper
         private void LoadGridExercise(string challenge)
         {
@@ -192,10 +175,35 @@ namespace ProgrammingLearningApp
         {
             LoadGridExercise(challenge: "HardChallenge");
         }
+        #endregion
 
-        private void pathfindingExerciseStrip_Click(object sender, EventArgs e)
+        private void clearGridButton_Click(object sender, EventArgs e)
         {
-            //
+            ClearGrid(_grid);
+            GridPanel.Invalidate();
+        }
+        private void ResetPlayerButton_Click(object sender, EventArgs e)
+        {
+            _player.Reset();
+            _player.path.ClearPath();
+        }
+
+        private void ClearGrid(Grid grid)
+        {
+            for (int i = 0; i < grid.Width; i++)
+            {
+                for (int j = 0; j < grid.Height; j++)
+                {
+                    Vector2 pos = new Vector2(i, j);
+                    grid.SetCell(pos, value: 'o');
+                }
+            }
+        }
+
+        // .txt file path finding helper
+        private string PathHelper(string name)
+        {
+            return App.GetPath(name);
         }
     }
 }

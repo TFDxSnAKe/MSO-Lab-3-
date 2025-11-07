@@ -36,7 +36,7 @@ namespace MSO_LAB_3
         {
             this.position = Vector2.Zero;
             this.direction = Direction.East;
-            path.clearPath();
+            path.ClearPath();
             path.AddStep(position);
         }
 

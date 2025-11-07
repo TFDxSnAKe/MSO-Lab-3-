@@ -12,14 +12,14 @@ namespace MSO_LAB_3
         public List<Vector2> Cells { get; } = new();
         public PathTrace()
         {
-            clearPath();
+            ClearPath();
         }
         public void AddStep(Vector2 pos)
         {
             Cells.Add(pos);
         }
 
-        public void clearPath() 
+        public void ClearPath() 
         {
             Cells.Clear(); 
         }
