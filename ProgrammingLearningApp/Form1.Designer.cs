@@ -236,6 +236,7 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             ResumeLayout(false);
@@ -244,9 +245,9 @@
 
         #endregion
 
-        private TextBox OutputBox;
+        public TextBox OutputBox;
         private Button ExecuteProgramButton;
-        private RichTextBox EditorWindow;
+        public RichTextBox EditorWindow;
         private Button MetricsButton;
         private ToolStrip toolStrip1;
         private ToolStripDropDownButton programStripButton;

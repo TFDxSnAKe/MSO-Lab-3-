@@ -5,9 +5,9 @@ namespace ProgrammingLearningApp
 {
     public partial class Form1 : Form
     {
-        private Grid _grid;
+        public Grid _grid;
         public string FilePath;
-        private Player _player;
+        public Player _player;
         public MSO_LAB_3.Program Program;
         public TextFileRead textFileReader;
 
@@ -202,6 +202,11 @@ namespace ProgrammingLearningApp
         private string PathHelper(string name)
         {
             return App.GetPath(name);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //
         }
     }
 }
